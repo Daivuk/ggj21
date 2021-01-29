@@ -62,6 +62,7 @@ public class Mover : MonoBehaviour
     {
         if(dashCoolCounter < 0)
         {
+            GameHandler.instance.playSoundEffect("dash");
             activeMoveSpeed = dashSpeed;
             dashCounter = dashLength;
             return true;

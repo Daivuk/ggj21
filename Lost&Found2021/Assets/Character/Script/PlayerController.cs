@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
 
 
             setUpCharacter(FocusObject);
-
-            LockedCharacter = false;
         }
         else
         {
@@ -47,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
+        if (LockedCharacter) return;
+
         MovementInput(inputActions.Player.Move.ReadValue<Vector2>());
     }
 
