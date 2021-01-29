@@ -6,6 +6,7 @@ public class Mover : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rigidbody2D;
     [HideInInspector] public Vector2 direction;
+    public Animator animatorController;
     public float speed;
     private float activeMoveSpeed;
     public float dashSpeed;
@@ -41,6 +42,19 @@ public class Mover : MonoBehaviour
 
     public void walk(Vector2 movementDirection)
     {
+        animatorController.SetFloat("DirectionX", movementDirection.x);
+        animatorController.SetFloat("DirectionY", movementDirection.y);
+
+        if(movementDirection != Vector2.zero)
+        {
+            animatorController.SetBool("Walking", true);
+        }
+        else
+        {
+            animatorController.SetBool("Walking", false);
+        }
+        
+
         direction = movementDirection;
         rigidbody2D.velocity = direction * activeMoveSpeed;
     }
