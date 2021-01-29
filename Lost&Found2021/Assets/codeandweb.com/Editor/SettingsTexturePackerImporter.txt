@@ -1,0 +1,9 @@
+version: 2
+importPivots: 1
+tpsheetFileNames:
+- Assets/Environment/Resources/Tiles.tpsheet
+textureFileNames:
+- Assets/Environment/Resources/Tiles.png
+normalmapFileNames:
+- 
+enableDebugOutput: 0
