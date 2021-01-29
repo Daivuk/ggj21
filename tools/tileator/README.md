@@ -1,1 +1,1 @@
-Converts PNG file into separate tile files. tile0.png, tile1.png, etc.
+Converts PNG file into separate tile files. floor_0.png, wall_1.png, etc.
