@@ -34,8 +34,6 @@ let TILE_TYPES = [
 let type_count = [0, 0, 0];
 
 let in_png = PNG.sync.read(fs.readFileSync('../../art_src/sewers_mockup.png'));
-// console.log(in_png);
-// process.exit();
 
 var out_png = new PNG({
     width: 32,
