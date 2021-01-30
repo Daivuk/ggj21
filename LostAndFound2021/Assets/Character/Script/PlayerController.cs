@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Mover mover;
     public bool LockedCharacter;
     public GameObject FocusObject; //change it for others
+    public Health characterHealth;
 
     private PlayerInput inputActions;
 
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public void setUpCharacter(GameObject Character)
     {
         mover = FocusObject.GetComponent<Mover>();
+        characterHealth = FocusObject.GetComponent<Health>();
     }
     public GameObject getFocusObject()
     {
