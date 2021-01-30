@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Mover : MonoBehaviour
 {
@@ -9,17 +10,25 @@ public class Mover : MonoBehaviour
     [HideInInspector] public Vector2 direction;
     public Animator animatorController;
     public float speed;
+    public float swimSpeed;
     private float activeMoveSpeed;
     public float dashSpeed;
     public float dashLength;
     public float dashCoolDown;
     public float dashInvinciblity;
+    public GameObject map;
+    public GameObject water;
 
     public float pushSpeed;
     private float dashCounter, dashCoolCounter;
 
     void Start()
     {
+        // In case of not set in inespector. Turns out lot of prefabs have a "mover".
+        // Didn't feel like going through them all. GAME JAM!
+        if (!map) map = GameObject.Find("Map");
+        if (!water) water = GameObject.Find("Water");
+
         dashCoolCounter = -1;
         dashCounter = -1;
         activeMoveSpeed = speed;
@@ -40,6 +49,22 @@ public class Mover : MonoBehaviour
         else if (dashCoolCounter > 0)
         {
             dashCoolCounter -= Time.deltaTime;
+        }
+        else
+        {
+            // Normal movement
+            activeMoveSpeed = speed; // Normal speed
+
+            var grid = map.GetComponent<Grid>();
+            var tilemap = water.GetComponent<Tilemap>();
+
+            Vector3Int lPos = grid.WorldToCell(gameObject.transform.position);
+            var tile = tilemap.GetTile(lPos);
+
+            if (tile)
+            {
+                activeMoveSpeed = swimSpeed;
+            }
         }
     }
 
