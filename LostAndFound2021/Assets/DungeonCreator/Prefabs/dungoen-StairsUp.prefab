@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7908872162295261617}
   - component: {fileID: 6483861697215211202}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -689613829
-  m_SortingLayer: 0
+  m_SortingLayerID: -697543375
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e5e63d4845bdb4ebfaa61a8abfcb128f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5598234773109821365}
   - component: {fileID: 5598234773109821366}
   - component: {fileID: 2002311542352807638}
-  m_Layer: 22
+  m_Layer: 9
   m_Name: dungoen-StairsUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024548054, y: 0.024266005}
+  m_Offset: {x: -0.019626617, y: 0.39974976}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -140,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0730238, y: 1.048532}
+  m_Size: {x: 0.7625122, y: 1.9761972}
   m_EdgeRadius: 0
 --- !u!50 &5598234773109821366
 Rigidbody2D:
@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3669848180391608729}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: PlayerSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7149316309959313252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.598, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5598234773109821364}

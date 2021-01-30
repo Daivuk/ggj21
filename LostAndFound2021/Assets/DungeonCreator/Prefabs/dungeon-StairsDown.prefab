@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640422323948196808}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: PlayerSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743664848500477335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.422, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4494667064708316208}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4494667064708316209}
   - component: {fileID: 4494667064708316210}
   - component: {fileID: 5541145610918626809}
-  m_Layer: 22
+  m_Layer: 9
   m_Name: dungeon-StairsDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2166612299479046709}
   - component: {fileID: 3038771827181835590}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,8 +193,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -689613829
-  m_SortingLayer: 0
+  m_SortingLayerID: -697543375
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: dbeb422f24e9a485bbc5eba1b4231f42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
