@@ -71,6 +71,10 @@ public class Mover : MonoBehaviour
                 movementDirection.y = 0;
             }
 
+            if (movementDirection.magnitude > 1)
+            {
+                movementDirection.Normalize();
+            }
 
             animatorController.SetFloat("DirectionX", movementDirection.x);
             animatorController.SetFloat("DirectionY", movementDirection.y);
