@@ -1593,7 +1593,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 24a61ae09922342a6bf758b1ae9ba121, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: ecdd70383091242bb8d0eb39cec80853, type: 2}
+    m_Data: {fileID: 11400000, guid: e1860c621cfc74d8da3e7abcb96a8d52, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 40ede664dda754dc993aef14d010fb22, type: 2}
   - m_RefCount: 2
@@ -1631,7 +1631,7 @@ Tilemap:
     m_Data: {fileID: 8271096184780980891, guid: 05439d6d2558f45f2bc079be7cf57cad,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -4640043791281479442, guid: 05439d6d2558f45f2bc079be7cf57cad,
+    m_Data: {fileID: -3742266007132950223, guid: 05439d6d2558f45f2bc079be7cf57cad,
       type: 3}
   - m_RefCount: 8
     m_Data: {fileID: -1271582270899746564, guid: 05439d6d2558f45f2bc079be7cf57cad,
@@ -1830,11 +1830,11 @@ CompositeCollider2D:
     m_ColliderPaths:
     - - X: -80000000
         Y: 40000000
-      - X: -60000100
+      - X: -70000100
         Y: 40000000
-      - X: -60000100
+      - X: -70000100
         Y: 39999959
-      - X: -60000041
+      - X: -70000041
         Y: 39999900
       - X: -50000000
         Y: 39999900
@@ -1864,11 +1864,11 @@ CompositeCollider2D:
         Y: 50000041
       - X: -49999959
         Y: 50000100
-      - X: -60000041
+      - X: -70000041
         Y: 50000100
-      - X: -60000100
+      - X: -70000100
         Y: 50000041
-      - X: -60000100
+      - X: -70000100
         Y: 50000000
       - X: -90000000
         Y: 50000000
