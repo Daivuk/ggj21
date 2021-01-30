@@ -1,0 +1,24 @@
+in order left to right:
+
+- Spoon
+- Swiss Cheese
+- Old Cog
+- Video Tape
+- Glasses           Increase vision (Zoom out cam)
+- Money
+- Coffee            Increase attack speed
+- Keychain          Can open locked chests
+- Pencil
+- Love Letter       Increase maximum paws by 1
+- Boot              Run faster
+- Book A
+- Book B
+- Book C
+- Mask              Protects from chemical fumes?
+- Cap
+- Flower
+- Pendant
+- Headphones        Play techno musics and muffles other sounds
+- Alchool           Screen becomes wavy
+- Suspicious Veggy
+
