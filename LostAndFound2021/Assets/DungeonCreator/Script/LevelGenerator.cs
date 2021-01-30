@@ -144,11 +144,12 @@ namespace LostAndFound.Dungeon
             foreach (Vector3 roomPos in roomPositions)
             {
                 RoomConditions conditions = RoomConditions.DefaultRoom;
-                /*
+                
                 if (treasureRoomIndexs.Contains(roomIndex))
                 {
                     conditions = RoomConditions.TreasureRoom;
                 }
+                /*
                 if (combatRoomIndexs.Contains(roomIndex))
                 {
                     conditions = RoomConditions.CombatRoom;
@@ -266,7 +267,7 @@ namespace LostAndFound.Dungeon
         public void CreateRoomsOutLine(Vector3 roomPosition, RoomConditions conditions)
         {
 
-            Debug.Log("RoomPosition " + roomPosition.ToString());
+            Debug.Log("RoomPosition " + roomPosition.ToString() + " room condition " + conditions.ToString());
 
             
             bool roomAbove = false;
@@ -298,20 +299,7 @@ namespace LostAndFound.Dungeon
                     roomRight = true;
                 }
             }
-            /*
-            if (roomPositions.Find(x => x == postionAbove) != null) roomAbove = true;
-            if (roomPositions.Find(x => x == postionBelow) != null) roomBelow = true;
-            if (roomPositions.Find(x => x == postionLeft) != null) roomLeft = true;
-            if (roomPositions.Find(x => x == postionRight) != null) roomRight = true;
-            */
-
-            /*
-            bool roomAbove = Physics2D.OverlapCircle(roomPosition + new Vector3(0, yOffset, 0), 0.2f, roomMask);
-            bool roomBelow = Physics2D.OverlapCircle(roomPosition + new Vector3(0, -yOffset, 0), 0.2f, roomMask);
-
-            bool roomLeft = Physics2D.OverlapCircle(roomPosition + new Vector3(-xOffset, 0, 0), 0.2f, roomMask);
-            bool roomRight = Physics2D.OverlapCircle(roomPosition + new Vector3(xOffset, 0, 0), 0.2f, roomMask);
-            */
+           
             int directionCount = 0;
 
             if (roomAbove)
@@ -412,7 +400,7 @@ namespace LostAndFound.Dungeon
         }
         private GameObject RandomRoom(RoomPrefabSubTypes selection, Vector3 position, RoomConditions conditions)
         {
-            GameObject roomType = null; RoomTypes.getRandomRoom(selection);
+            GameObject roomType = null;
 
             //make it so the enterance and exit will never be a hallway
             switch (conditions)
@@ -432,12 +420,14 @@ namespace LostAndFound.Dungeon
                 case RoomConditions.DefaultRoom:
 
                     //everything but treasure room and hidden rooms
-                    roomType = RoomTypes.getRandomRoom(selection);
+                    roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.OpenRoom); // RoomTypes.getRandomRoom(selection);
 
+                    /*
                     while (roomType.GetComponent<RoomPlacementLogic>().roomType == RoomPlacementLogic.RoomType.TreasureRoom || roomType.GetComponent<RoomPlacementLogic>().roomType == RoomPlacementLogic.RoomType.CombatRoom)
                     {
                         roomType = RoomTypes.getRandomRoom(selection);
                     }
+                    */
                     break;
             }
 
@@ -479,11 +469,11 @@ namespace LostAndFound.Dungeon
             {
                 availableRooms.Remove(combatRoomIndexs[i]);
             }
-            
+            */
 
 
             //treasure rooms
-            for (int i = 0; i < availableRooms.Count; i++)
+            for (int i = 1; i < availableRooms.Count; i++) //fist and last room can't be treasure rooms
             {
                 if (treasureRoomIndexs.Count < MaxChestCount)
                 {
@@ -498,14 +488,12 @@ namespace LostAndFound.Dungeon
                     break;
                 }
             }
-
+            
             //remove availableRooms
             for (int i = 0; i < treasureRoomIndexs.Count; i++)
             {
                 availableRooms.Remove(treasureRoomIndexs[i]);
             }
-            */
-
         }
 
         void AddDoorLogic(RoomPlacementLogic room)

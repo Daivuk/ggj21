@@ -218,6 +218,8 @@
             <key type="filename">../content/sewer_tiles/floor_126.png</key>
             <key type="filename">../content/sewer_tiles/floor_127.png</key>
             <key type="filename">../content/sewer_tiles/floor_128.png</key>
+            <key type="filename">../content/sewer_tiles/floor_129.png</key>
+            <key type="filename">../content/sewer_tiles/floor_130.png</key>
             <key type="filename">../content/sewer_tiles/floor_14.png</key>
             <key type="filename">../content/sewer_tiles/floor_15.png</key>
             <key type="filename">../content/sewer_tiles/floor_16.png</key>
@@ -285,6 +287,12 @@
             <key type="filename">../content/sewer_tiles/wall_18.png</key>
             <key type="filename">../content/sewer_tiles/wall_19.png</key>
             <key type="filename">../content/sewer_tiles/wall_2.png</key>
+            <key type="filename">../content/sewer_tiles/wall_20.png</key>
+            <key type="filename">../content/sewer_tiles/wall_21.png</key>
+            <key type="filename">../content/sewer_tiles/wall_22.png</key>
+            <key type="filename">../content/sewer_tiles/wall_23.png</key>
+            <key type="filename">../content/sewer_tiles/wall_24.png</key>
+            <key type="filename">../content/sewer_tiles/wall_25.png</key>
             <key type="filename">../content/sewer_tiles/wall_3.png</key>
             <key type="filename">../content/sewer_tiles/wall_4.png</key>
             <key type="filename">../content/sewer_tiles/wall_5.png</key>

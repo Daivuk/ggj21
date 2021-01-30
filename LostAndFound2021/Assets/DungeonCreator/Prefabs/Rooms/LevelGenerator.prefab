@@ -208,90 +208,150 @@ MonoBehaviour:
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: c09eec1489f534419961ab11bd12adac, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: d2bb627cba2214609b561828ae87c634, type: 3}
     singleDown:
       roomSubTypes:
       - name: OpenRooms
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 3dbc06ef74cf54c849f6938c43338c8d, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: c47c596f2c8d841588bb033c1e77e203, type: 3}
     singleLeft:
       roomSubTypes:
       - name: OpenRooms
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: ad7e79742c77b403fae419211bd8d927, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 1c5820aeb34804b71847b8c89fc93a2b, type: 3}
     singleRight:
       roomSubTypes:
       - name: OpenRooms
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 69f8c64c09eed4f04942804bf5de6ad6, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: b82d3d76f53a345688eb7c1dae8f788c, type: 3}
     DoubleLeftRight:
       roomSubTypes:
       - name: Open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: b9c02f75c0bfc48f5bc434242e869f5c, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 7ba3d816542de4700934cafcf57fdcdd, type: 3}
     DoubleUpDown:
       roomSubTypes:
       - name: Open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 800bc960131934227b30b929cce8a465, type: 3}
+      - name: Treasure Room
+        roomType: 0
+        myList:
+        - {fileID: 7845818214778466103, guid: 9f2db129016704d49942c185d32522fe, type: 3}
     DoubleUpLeft:
       roomSubTypes:
       - name: Open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 5b878f9de268e4acb9416844bedbcbc1, type: 3}
+      - name: Open
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 875809f35967c4c288748fc8165a78e3, type: 3}
     DoubleUpRight:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 6af705ecd195749a9a44a337884e7ef3, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: b74a22e8ffced43289cafe98fec2d006, type: 3}
     DoubleDownLeft:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: ce28a7293e4f04f4ebb8b53733de6921, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 94e76c2495efa4524b1f6516fa3845ea, type: 3}
     DoubleDownRight:
       roomSubTypes:
       - name: Open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 8957ff3f1310848a797cec850a8611e7, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 10356bbca99fa4ab88a91fbc34a4bd8a, type: 3}
     trippleDownLeftRight:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: f87392af6fea2421daebc5e79d1710db, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 39fc72cbead8c4facabb07f7f1359749, type: 3}
     trippleUpLeftRight:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 0793e3caf4ed14526b471b492df10eca, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 1a8b049435b7749a9a556da06cb4d7f7, type: 3}
     trippleUpDownLeft:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 349f943eefa4f47a78a555b965d350c6, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: 710644be1954448338ada1ceb3b8fd77, type: 3}
     trippleUpDownRight:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: faa86c4a2e0094eca9a56b6290f80840, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: e7ead6737e9b24fe8ba852bd8ed87b45, type: 3}
     Fourway:
       roomSubTypes:
       - name: open
         roomType: 0
         myList:
         - {fileID: 7845818214778466103, guid: 4e49084dcf0934209afb0b76f7f65fab, type: 3}
+      - name: Treasure Room
+        roomType: 3
+        myList:
+        - {fileID: 7845818214778466103, guid: c22f97a0826b44627ae78dfcafbaf198, type: 3}
   RoomObjPrefabs:
     StairsUp: {fileID: 5598234773109821256, guid: f8f5ac7aa73ef49a78dd8a2c18395352,
       type: 3}

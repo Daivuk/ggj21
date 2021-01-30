@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32cc01e5de6d4a879e4ec649c4df327, type: 3}
   m_Name: Dungeon1ChestDrop
   m_EditorClassIdentifier: 
-  itemDrop: []
+  itemDrop:
+  - item: {fileID: 11400000, guid: 866cb6e1957914bafba518392bf12fd6, type: 2}
+    chance: {x: 0, y: 10}
+    StackAmount: {x: 0, y: 0}
+  - item: {fileID: 11400000, guid: a1d7a0bd26ef94a759fb7a04200db390, type: 2}
+    chance: {x: 10, y: 20}
+    StackAmount: {x: 0, y: 0}
+  - item: {fileID: 11400000, guid: d9fb2c1c4579f41f78b58a247540d767, type: 2}
+    chance: {x: 20, y: 30}
+    StackAmount: {x: 0, y: 0}
+  - item: {fileID: 11400000, guid: 77f6e9549434a422db3903b08ea7eda1, type: 2}
+    chance: {x: 30, y: 40}
+    StackAmount: {x: 0, y: 0}
+  - item: {fileID: 11400000, guid: 505ba62835dd7468e953d87e73b757e5, type: 2}
+    chance: {x: 40, y: 100}
+    StackAmount: {x: 0, y: 0}

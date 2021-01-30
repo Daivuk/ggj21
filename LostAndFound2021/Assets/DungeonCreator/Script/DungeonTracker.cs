@@ -68,6 +68,8 @@ namespace LostAndFound.Dungeon
             dungeonActive = true;
 
             floor.gameObject.transform.position = levelPostionOffset; //offset
+
+            finishedLoadingLevel = true; //telling all the chest and enemy to launch
         }
 
         public void LoadFloor()
