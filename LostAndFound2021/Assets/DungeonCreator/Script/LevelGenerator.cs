@@ -140,8 +140,8 @@ namespace LostAndFound.Dungeon
             
             CreateRoomsOutLine(Vector3.zero, RoomConditions.StairRoom); //starting room
 
-            
-            foreach (Vector3 roomPos in roomPositions)
+
+            for (int i = 1; i < roomPositions.Count - 1; i++)
             {
                 RoomConditions conditions = RoomConditions.DefaultRoom;
                 
@@ -149,35 +149,29 @@ namespace LostAndFound.Dungeon
                 {
                     conditions = RoomConditions.TreasureRoom;
                 }
-                /*
-                if (combatRoomIndexs.Contains(roomIndex))
-                {
-                    conditions = RoomConditions.CombatRoom;
-                }
-                */
-                CreateRoomsOutLine(roomPos, conditions);
+                
+                CreateRoomsOutLine(roomPositions[i], conditions);
                 roomIndex++;
             }
 
             CreateRoomsOutLine(endRoom.transform.position, RoomConditions.StairRoom);
             
 
-
-            
             doorList = new List<GameObject>();
 
             //creating props for the room
-            foreach (GameObject room in roomList)
+            for(int i = 0; i < roomList.Count;i++)
             {
-                RoomPlacementLogic rp = room.GetComponent<RoomPlacementLogic>();
+                RoomPlacementLogic rp = roomList[i].GetComponent<RoomPlacementLogic>();
 
-                if (room.transform.position == Vector3.zero)
+                if (i == 0)
+                //if (roomList[i].transform.position == Vector3.zero)
                 {
                     //start position
                     upStairs = Instantiate(RoomObjPrefabs.StairsUp, RoomProps.transform).GetComponent<DungeonStairs>();
                     upStairs.transform.position = rp.StairPositions[0].position;
                 }
-                else if (room.transform.position == endRoom.transform.position)
+                else if (i == roomList.Count - 1) //(roomList[i].transform.position == endRoom.transform.position)
                 {
                     //end room
                     downStairs = Instantiate(RoomObjPrefabs.StairsDown, RoomProps.transform).GetComponent<DungeonStairs>();
@@ -193,7 +187,7 @@ namespace LostAndFound.Dungeon
 
             }
             
-            //DungeonTracker.instance.finishedLoadingLevel = true;
+            DungeonTracker.instance.finishedLoadingLevel = true;
             
             //StartCoroutine(buildMesh());
             //Debug.Log("levelGenerator: finished adding stairs and doors");
@@ -433,7 +427,7 @@ namespace LostAndFound.Dungeon
 
             if (roomType == null)
             {
-                Debug.LogError("Room creation returned Null. Issue with setup " + selection.ToString());
+                Debug.LogError("Room creation returned Null. Issue with setup " + selection.ToString() + " conditions " + conditions.ToString());
             }
 
             GameObject room = Instantiate(roomType);

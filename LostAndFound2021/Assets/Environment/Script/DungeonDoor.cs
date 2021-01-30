@@ -11,7 +11,6 @@ public class DungeonDoor : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             dungeon.StartDungeon();
-            dungeon.setPlayerToStartingStairs();
             if (entering)
             {
                 GameHandler.instance.playTheme("dungeon");
