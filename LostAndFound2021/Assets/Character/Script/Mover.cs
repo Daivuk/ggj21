@@ -10,7 +10,7 @@ public class Mover : MonoBehaviour
     [HideInInspector] public Vector2 direction;
     public Animator animatorController;
     public float speed;
-    public float swimSpeed;
+    public float swimSpeedMultiplier;
     private float activeMoveSpeed;
     public float dashSpeed;
     public float dashLength;
@@ -50,26 +50,12 @@ public class Mover : MonoBehaviour
         {
             dashCoolCounter -= Time.deltaTime;
         }
-        else
-        {
-            // Normal movement
-            activeMoveSpeed = speed; // Normal speed
-
-            var grid = map.GetComponent<Grid>();
-            var tilemap = water.GetComponent<Tilemap>();
-
-            Vector3Int lPos = grid.WorldToCell(gameObject.transform.position);
-            var tile = tilemap.GetTile(lPos);
-
-            if (tile)
-            {
-                activeMoveSpeed = swimSpeed;
-            }
-        }
     }
 
     public void walk(Vector2 movementDirection)
     {
+        float speedMultiplier = 1.0f;
+
         if(animateMovement == true)
         {
             if (movementDirection.x < -0.1)
@@ -113,10 +99,31 @@ public class Mover : MonoBehaviour
             {
                 animatorController.SetBool("Walking", false);
             }
+
+            
+            // Swimming
+            {
+                // Normal movement
+                var grid = map.GetComponent<Grid>();
+                var tilemap = water.GetComponent<Tilemap>();
+
+                Vector3Int lPos = grid.WorldToCell(gameObject.transform.position);
+                var tile = tilemap.GetTile(lPos);
+
+                if (tile)
+                {
+                    animatorController.SetBool("Swimming", true);
+                    speedMultiplier *= swimSpeedMultiplier;
+                }
+                else
+                {
+                    animatorController.SetBool("Swimming", false);
+                }
+            }
         }
         
         direction = movementDirection;
-        rigidbody2D.velocity = direction * activeMoveSpeed;
+        rigidbody2D.velocity = direction * activeMoveSpeed * speedMultiplier;
     }
     public void walk(Vector2 movementDirection, float Speed)
     {
