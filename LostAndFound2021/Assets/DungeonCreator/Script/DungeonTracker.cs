@@ -12,7 +12,6 @@ namespace LostAndFound.Dungeon
         public string dungeonName;
         public int currentFloor;
         public GameObject levelGeneratorPrefab;
-        public Vector3 levelPostionOffset;
         public List<LevelGenerator> floors;
 
         public LevelGenerator activeFloor;
@@ -38,13 +37,14 @@ namespace LostAndFound.Dungeon
         [HideInInspector] public bool finishedLoadingLevel;
 
         private bool dungeonActive = false;
-
+        private bool dungeonLoading;
         private void Awake()
         {
             if (DungeonTracker.instance == null)
             {
                 instance = this;
                 DontDestroyOnLoad(this.gameObject);
+                dungeonLoading = false;
             }
             else
             {
@@ -55,21 +55,37 @@ namespace LostAndFound.Dungeon
 
         public void StartDungeon()
         {
-            floors = new List<LevelGenerator>();
-            currentFloor = 0;
-            finishedLoadingLevel = false;
-            travelingBetweenFloors = false;
+            if (dungeonLoading == false)
+            {
+                travelingBetweenFloors = true;
+                PlayerController.instance.getFocusObject().SetActive(false);
+                dungeonLoading = true;
+                floors = new List<LevelGenerator>();
+                currentFloor = 0;
+                finishedLoadingLevel = false;
 
-            LevelGenerator floor = Instantiate(levelGeneratorPrefab, this.gameObject.transform).GetComponent<LevelGenerator>();
+                LevelGenerator floor = Instantiate(levelGeneratorPrefab, this.gameObject.transform).GetComponent<LevelGenerator>();
 
-            floor.initGenerator();
-            floors.Add(floor);
-            LoadFloor();
-            dungeonActive = true;
+                floor.initGenerator();
+                floors.Add(floor);
+                LoadFloor();
+                dungeonActive = true;
 
-            floor.gameObject.transform.position = levelPostionOffset; //offset
+                finishedLoadingLevel = true; //telling all the chest and enemy to launch
+                travelingBetweenFloors = false;
+                PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
+                PlayerController.instance.getFocusObject().SetActive(true);
+            }
+            else if(floors.Count >= 1)
+            {
+                currentFloor = 0;
+                LoadFloor();
+                PlayerController.instance.getFocusObject().SetActive(false);
+                PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
+                PlayerController.instance.getFocusObject().SetActive(true);
+            }
 
-            finishedLoadingLevel = true; //telling all the chest and enemy to launch
+            
         }
 
         public void LoadFloor()
@@ -81,11 +97,10 @@ namespace LostAndFound.Dungeon
             }
             activeFloor = floors[currentFloor]; //start at 1
             activeFloor.gameObject.SetActive(true);
-
             //
 
-           // partyMemebers.gameObject.SetActive(true);
-            
+            // partyMemebers.gameObject.SetActive(true);
+
             //MenuController.instance.locationInfo.displayNewLocationName(dungeonName + " F" + (currentFloor + 1));
         }
 
@@ -117,26 +132,22 @@ namespace LostAndFound.Dungeon
 
         public void Down()
         {
-            /*
             if(DungeonTracker.instance.travelingBetweenFloors == false)
             {
                 DungeonTracker.instance.travelingBetweenFloors = true; //stop the event being called twice while transitioning
                 currentFloor++;
                 StartCoroutine(ChangeFloorSequence(1));
             }
-            */
         }
         
         public void Up()
         {
-            /*
             if (DungeonTracker.instance.travelingBetweenFloors == false)
             {
                 DungeonTracker.instance.travelingBetweenFloors = true; //stop the event being called twice while transitioning
                 currentFloor--;
                 StartCoroutine(ChangeFloorSequence(-1));
             }
-            */
         }
 
         private IEnumerator ChangeFloorSequence(int floorDrop)
@@ -154,12 +165,13 @@ namespace LostAndFound.Dungeon
             {
                 if (currentFloor == specialFloors[i].floorID)
                 {
-                    //incase your exiting
-                    if(specialFloors[i].loadingScene == EntranceName)
+                    if (specialFloors[i].teleportCurrentScene && specialFloors[i].loadNewScene == false)
                     {
-                        currentFloor = -1;
+                        GameObject spawnLocation = GameObject.Find(specialFloors[i].spawnPoint);
+                        PlayerController.instance.getFocusObject().transform.position = spawnLocation.transform.position;
                     }
-                    LaunchNewScene(specialFloors[i].loadingScene, specialFloors[i].spawnPoint);
+
+                    //LaunchNewScene(specialFloors[i].loadingScene, specialFloors[i].spawnPoint);
                     SpecialFloor = true;
                 }
             }
@@ -174,11 +186,22 @@ namespace LostAndFound.Dungeon
                     floor.initGenerator();
                     floors.Add(floor);
                     activeFloor = floor;
+                    LoadFloor();
                 }
                 else
                 {
                     activeFloor = floors[currentFloor]; //start at 1
                     activeFloor.gameObject.SetActive(true);
+                }
+
+
+                if(floorDrop > 0)
+                {
+                    PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
+                }
+                else
+                {
+                    PlayerController.instance.getFocusObject().transform.position = activeFloor.downStairs.playerOffset.position;
                 }
 
                 /*
@@ -255,6 +278,8 @@ namespace LostAndFound.Dungeon
     public class SpecialFloors
     {
         public int floorID;
+        public bool loadNewScene;
+        public bool teleportCurrentScene;
         public string loadingScene;
         public string spawnPoint;
     }
