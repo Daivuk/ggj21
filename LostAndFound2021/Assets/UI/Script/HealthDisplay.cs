@@ -10,55 +10,91 @@ public class HealthDisplay : MonoBehaviour
 
     public List<Sprite> HeartPeaces;
 
-    private bool AnimateShine;
-    public float shineCycle;
+    public Sprite fullHeartImage;
+    public float precentageOfShine;
+    public float TimeBeforeAsking;
+    private float currentCount;
+    private bool fullHearts;
 
-    public List<Sprite> ShineFrames;
+    private bool AcitveShine;
+    public List<Sprite> Shine;
+    public float shineFrameSpeed;
+    private float currentShineFrameSpeed;
+    private int shineFrameIndex;
 
-    private int shineIndex;
-    private float count;
+    public Animator animator;
+    // Update is called once per frame
 
-    // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
-        
+        AcitveShine = false;
+        fullHearts = false;
+
+        /*
+        if (healthCount == totalHealthCount)
+        {
+            fullHearts = true;
+        }
+        */
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (AnimateShine)
+        if(AcitveShine == false && fullHearts)
         {
-            count -= Time.deltaTime;
-            if(count < 0)
+            currentCount -= Time.deltaTime;
+            if (currentCount < 0)
             {
-                count = shineCycle;
-                shineIndex++;
-
-                if(shineIndex >= ShineFrames.Count)
+                float random = Random.Range(0.0f, 1.0f);
+                if (fullHearts && random <= precentageOfShine)
                 {
-                    shineIndex = 0;
+                    AcitveShine = true;
+                    shineFrameIndex = 0;
                 }
-                Image.sprite = HeartPeaces[shineIndex];
+                currentCount = TimeBeforeAsking;
             }
         }
+        else if(fullHearts && AcitveShine)
+        {
+            currentShineFrameSpeed -= Time.deltaTime;
+            if(currentShineFrameSpeed < 0)
+            {
+                currentShineFrameSpeed = shineFrameSpeed;
+                shineFrameIndex++;
+
+                if(shineFrameIndex < Shine.Count)
+                {
+                    Image.sprite = Shine[shineFrameIndex];
+                }
+                else
+                {
+                    shineFrameIndex = 0;
+                    AcitveShine = false;
+                }
+            }
+        }
+       
+       
+    }
+
+    private void AnimateHeartShine()
+    {
+        animator.SetTrigger("shine");
     }
 
     public void UpdateImage()
     {
         if(healthCount < HeartPeaces.Count)
         {
-            Image.sprite = HeartPeaces[healthCount];
+           // animator.StopPlayback();
+            fullHearts = false;
+            if(healthCount > -1) Image.sprite = HeartPeaces[healthCount];
         }
         else
         {
-            if (AnimateShine == false)
-            {
-                count = shineCycle;
-                shineIndex = 0;
-            }
-            AnimateShine = true;
-             
+           // animator.StartPlayback();
+            Image.sprite = fullHeartImage;
+            fullHearts = true;
         }
 
     }

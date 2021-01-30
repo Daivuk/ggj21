@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -565554795
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6761430509191847270, guid: a58d9bac0307d47f6a72df08258b7670,
     type: 3}
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae65806f34642534988285b7088f48e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 4
-  TotalHealth: 4
+  currentHealth: 5
+  TotalHealth: 8
 --- !u!114 &6630419352109219350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d77d27f83ec4dee9519ca0f3a4d252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animateMovement: 1
   rigidbody2D: {fileID: 0}
   direction: {x: 0, y: 0}
   animatorController: {fileID: 5151487128089295251}
@@ -154,6 +155,7 @@ MonoBehaviour:
   dashLength: 0.5
   dashCoolDown: 1
   dashInvinciblity: 0.5
+  pushSpeed: 2.5
 --- !u!114 &6630419352109219353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd56da90ef514002817306ff77f1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageTake:
+    m_PersistentCalls:
+      m_Calls: []
+  AttackDamage: 1
+  invulnerableCoolDown: 1.5
 --- !u!50 &6630419352109219348
 Rigidbody2D:
   serializedVersion: 4
@@ -233,7 +240,7 @@ MonoBehaviour:
   - {x: -0.25811648, y: 0.49267012, z: 0}
   m_ShapePathHash: -135575605
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40636
+  m_InstanceId: 82920
 --- !u!58 &1054423091168451805
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -247,6 +254,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.13926649}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.26073352

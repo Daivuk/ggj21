@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4652948794234925899}
   - component: {fileID: 4652948794234925897}
   - component: {fileID: 4652948794234925896}
+  - component: {fileID: 2085782930363522587}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -55,6 +56,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0268b224099f482781fafc4f82a9605, type: 3}
   - {fileID: 8300000, guid: 8613553f974c24854a0272b51def8e90, type: 3}
   - {fileID: 8300000, guid: a6001e0b59b1c4ab8b50f7028dfbe9eb, type: 3}
+  inventory: []
   MasterVolume: 0.5
 --- !u!82 &4652948794234925896
 AudioSource:
@@ -152,3 +154,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!320 &2085782930363522587
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652948794234925898}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []

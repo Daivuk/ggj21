@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - ActivationZone
+  - box
+  - chest
   layers:
   - Default
   - TransparentFX
@@ -46,9 +48,9 @@ TagManager:
   - name: Map
     uniqueID: 1935401375
     locked: 0
-  - name: Player
-    uniqueID: 3729412501
-    locked: 0
   - name: Objects
     uniqueID: 3597423921
+    locked: 0
+  - name: Player
+    uniqueID: 3729412501
     locked: 0

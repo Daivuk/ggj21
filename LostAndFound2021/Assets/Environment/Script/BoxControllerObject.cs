@@ -9,9 +9,11 @@ public class BoxControllerObject : Interactable
     public int maxBreakAblePiece = 5;
     //public ItemDropManager itemManager;
     private float ItemSpawnTimer;
-
+    public Health health;
+    private Animator animator;
     public void Awake()
     {
+        animator = GetComponent<Animator>();
         ItemSpawnTimer = 5f;
         //interactionDistance = 5;
     }
@@ -20,28 +22,42 @@ public class BoxControllerObject : Interactable
         //base.Interact();
     }
 
-    public void Damage()
+    public override void Damage(int damage)
     {
-        //create a shatter 5 pease
-        int randomPiece = Random.Range(2, maxBreakAblePiece);
-
-        for (int i = 0; i < randomPiece; i++)
+        if(health.currentHealth > 0)
         {
-            int random = Random.Range(0, shards.Length);
-            float OffsetX = Random.Range(-0.5f, 0.5f);
-            float OffsetY = Random.Range(-0.5f, 0.5f);
-            Instantiate(brokenPeicePrefab, new Vector3(transform.position.x + OffsetX, transform.position.y + OffsetY), transform.rotation).GetComponent<BrokenPieces>().setUp(shards[random], 30f);
+            health.currentHealth -= damage;
+
+            float randomHit = Random.Range(0.0f, 1.0f);
+            Debug.Log("random box hit = " + randomHit);
+            animator.SetFloat("damage", randomHit);
+            animator.SetTrigger("hit");
+        }
+        else
+        {
+            int randomPiece = Random.Range(2, maxBreakAblePiece);
+
+            for (int i = 0; i < randomPiece; i++)
+            {
+                int random = Random.Range(0, shards.Length);
+                float OffsetX = Random.Range(-0.5f, 0.5f);
+                float OffsetY = Random.Range(-0.5f, 0.5f);
+                Instantiate(brokenPeicePrefab, new Vector3(transform.position.x + OffsetX, transform.position.y + OffsetY), transform.rotation).GetComponent<BrokenPieces>().setUp(shards[random], 30f);
+            }
+            //spawn item;
+            //Item item = itemManager.getDrop();
+            /*
+            if (item != null)
+            {
+                //ItemPickUpHandler.createTimedPickUp(GameController.instance.ItemPickUpPrefab, item, gameObject.transform, ItemSpawnTimer);
+            }
+            */
+            Destroy(this.gameObject);
         }
 
-        //spawn item;
-        //Item item = itemManager.getDrop();
-        /*
-        if (item != null)
-        {
-            //ItemPickUpHandler.createTimedPickUp(GameController.instance.ItemPickUpPrefab, item, gameObject.transform, ItemSpawnTimer);
-        }
-        */
 
-        Destroy(this.gameObject);
+
+
+        
     }
 }

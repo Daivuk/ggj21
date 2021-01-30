@@ -25,17 +25,14 @@ public class ItemStash : MonoBehaviour
         Stash = new List<Item>();
         for (int i = 0; i < OriginalItemList.Count; i++)
         {
-            Stash.Add(null);
-        }
-        for (int i = 0; i < OriginalItemList.Count; i++)
-        {
             if (OriginalItemList[i].items != null)
             {
-                Item item = new Item(ItemListManager.getItemStats(OriginalItemList[i].items.itemID));
+                ItemBaseStat stat = ItemListManager.getItemStats(OriginalItemList[i].items.itemID);
+                Item item = new Item(stat);
 
                 int amount = Random.Range((int)OriginalItemList[i].RandomAmount.x, (int)OriginalItemList[i].RandomAmount.y);
                 item.currentStack = amount;
-                Stash[i] = item;
+                Stash.Add(item);
             }
         }
     }

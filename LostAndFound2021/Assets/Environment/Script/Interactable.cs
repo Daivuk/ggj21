@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
 
     }
 
-    public void Damage(int damageAmount)
+    public virtual void Damage(int damageAmount)
     {
 
     }

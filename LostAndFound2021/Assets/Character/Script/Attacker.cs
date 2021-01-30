@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Attacker : MonoBehaviour
 {
+    [HideInInspector] public UnityEvent DamageTake;
+    public int AttackDamage;
+    public float invulnerableCoolDown;
+    private float currentInvulnerableCount;
+    private bool invulnerable;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,30 @@ public class Attacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (invulnerable)
+        {
+            currentInvulnerableCount -= Time.deltaTime;
+            if(currentInvulnerableCount < 0)
+            {
+                invulnerable = false;
+            }
+        }
+    }
+
+    public void DamageTarget(Vector3 dir, int damageAmount)
+    {
+        if(invulnerable == false)
+        {
+            this.GetComponent<Health>().currentHealth -= damageAmount;
+            //this.GetComponent<Mover>().KnockBack(dir, knockBackStrength);
+            DamageTake.Invoke();
+
+            if(invulnerableCoolDown > 0)
+            {
+                invulnerable = true;
+                currentInvulnerableCount = invulnerableCoolDown;
+            }
+        }
+       
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Playables;
+using Cinemachine;
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler instance;
@@ -16,6 +17,10 @@ public class GameHandler : MonoBehaviour
 
     public List<AudioClip> SoundEffects;
 
+    public List<Item> inventory;
+    
+
+
     [SerializeField] private float MasterVolume;
 
     public void Awake()
@@ -24,6 +29,7 @@ public class GameHandler : MonoBehaviour
         {
             instance = this;
             playTheme("title");
+            inventory = new List<Item>();
         }
         else
         {
@@ -101,5 +107,13 @@ public class GameHandler : MonoBehaviour
     {
         GamePaused = true;
         PlayerController.instance.LockedCharacter = true;
+    }
+    public void AddItemToInventory(Item item)
+    {
+        inventory.Add(item);
+    }
+    public void RemoveItemFromInventory(Item item)
+    {
+        inventory.Remove(item);
     }
 }

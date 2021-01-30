@@ -1,11 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ChestController : MonoBehaviour
+using UnityEngine.Playables;
+public class ChestController : Interactable
 {
+    public bool loadItem;
     [SerializeField] public ItemStash itemStash;
-    public bool storage;
+    public Sprite closeChest;
+    public Sprite openChest;
+    private bool isOpened;
+
+    private SpriteRenderer sprite;
+    public SpriteRenderer itemRef;
+
+    public PlayableDirector director;
+    public PlayableAsset openChestAnimation;
+
+    public void Awake()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+        if (loadItem)
+        {
+            itemStash.init();
+        }
+    }
 
     public void ChestInit(List<ItemDropBase> itemDrops)
     {
@@ -13,23 +31,27 @@ public class ChestController : MonoBehaviour
         {
             Debug.Log("ItemStash == null ");
         }
-        if (storage == false)
+
+        itemStash.clearList();
+        itemStash.OriginalItemList = itemDrops;
+        itemStash.init();
+    }
+    public override void Interact()
+    {
+        //base.Interact();
+        if(isOpened == false)
         {
-            itemStash.clearList();
-            itemStash.OriginalItemList = itemDrops;
-            itemStash.init();
+            isOpened = true;
+            itemRef.sprite = itemStash.Stash[0].stats.icon;
+            director.Play(openChestAnimation);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddItemToInventory()
     {
-        
+        GameHandler.instance.AddItemToInventory(itemStash.Stash[0]);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
 }

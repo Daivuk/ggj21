@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6796366950560814065}
   - component: {fileID: 6796366950560814066}
   - component: {fileID: 6796366950560814067}
+  - component: {fileID: 6328454913610358299}
   m_Layer: 5
   m_Name: HealthIcon
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6796366950560814065
 CanvasRenderer:
@@ -96,9 +97,34 @@ MonoBehaviour:
   - {fileID: -466313285030213939, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
   - {fileID: -8679396308505410338, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
   - {fileID: -5386307025896964632, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
-  shineCycle: 2
-  ShineFrames:
-  - {fileID: -5449040201064031705, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
+  fullHeartImage: {fileID: -5449040201064031705, guid: de5cb4b52e843e847a11bb5ce84ddf6d,
+    type: 3}
+  precentageOfShine: 0.5
+  TimeBeforeAsking: 2
+  fullHearts: 0
+  Shine:
   - {fileID: -2795190408284843147, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
   - {fileID: -4491800467889117922, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
   - {fileID: -2869390364625695416, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
+  - {fileID: -5449040201064031705, guid: de5cb4b52e843e847a11bb5ce84ddf6d, type: 3}
+  shineFrameSpeed: 0.1
+  animator: {fileID: 6328454913610358299}
+--- !u!95 &6328454913610358299
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796366950560814069}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6279dfcde677b4eb08c85de458d0fa78, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

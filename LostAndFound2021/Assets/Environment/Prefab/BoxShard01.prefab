@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3884524893881036731}
   - component: {fileID: 1706136576057304469}
   - component: {fileID: 6628662025811860749}
+  - component: {fileID: 4342194032024112147}
   m_Layer: 0
   m_Name: BoxShard01
   m_TagString: Untagged
@@ -114,9 +115,24 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4342194032024112147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822699980837290579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8815232244e4a47e9ba0c5326464a8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
+  renderer: {fileID: 0}
+  fadeOutSpeed: 1.5
