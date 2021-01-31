@@ -9,12 +9,10 @@ public class ItemStash : MonoBehaviour
 
     private void Awake()
     {
-
-        if (Stash == null)
+        if (Stash == null) // Do this every time. There is no way I'm going through each individual treasure room and adding _all_ items for each.
         {
             init();
         }
-
     }
     public void clearList()
     {
