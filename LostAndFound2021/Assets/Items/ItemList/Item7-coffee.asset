@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a3f67f7dde141d396aa30ca8f241b3, type: 3}
   m_Name: Item7-coffee
   m_EditorClassIdentifier: 
-  itemID: Item7
+  itemID: Item6
   itemName: Coffee
   icon: {fileID: 1346312723713424135, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
   questReward: fullHeal

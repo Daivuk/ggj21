@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1a3f67f7dde141d396aa30ca8f241b3, type: 3}
-  m_Name: Item6-money
+  m_Name: Item20-poison
   m_EditorClassIdentifier: 
-  itemID: Item5
-  itemName: Money
-  icon: {fileID: -6491491721578957996, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  itemID: Item19
+  itemName: Poison
+  icon: {fileID: 27081726614491266, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
   questReward: fullHeal

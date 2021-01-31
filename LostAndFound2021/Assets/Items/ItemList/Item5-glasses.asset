@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a3f67f7dde141d396aa30ca8f241b3, type: 3}
   m_Name: Item5-glasses
   m_EditorClassIdentifier: 
-  itemID: Item5
-  itemName: glasses
+  itemID: Item4
+  itemName: Glasses
   icon: {fileID: 2108165524544580468, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
   questReward: health+

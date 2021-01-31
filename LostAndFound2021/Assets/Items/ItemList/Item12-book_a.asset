@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1a3f67f7dde141d396aa30ca8f241b3, type: 3}
-  m_Name: Item1-spoon 1
+  m_Name: Item12-book_a
   m_EditorClassIdentifier: 
-  itemID: Item0
-  itemName: Spoon
-  icon: {fileID: -6738279932420892375, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
-  questReward: damage+
+  itemID: Item11
+  itemName: Book A
+  icon: {fileID: 3800492990578824002, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: fullHeal
