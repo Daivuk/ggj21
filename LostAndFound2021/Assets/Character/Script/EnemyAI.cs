@@ -123,6 +123,8 @@ public class EnemyAI : Interactable
                         mover.playattackAnimation();
                         PlayerController.instance.attacker.DamageTarget(attacker.AttackDamage);
                         currentCountForAttackRate = AttackRate;
+                        var claw_fx = Instantiate(GameHandler.instance.ClawFxPrefab);
+                        claw_fx.transform.position = PlayerController.instance.getFocusObject().transform.position;
                     }
                 }
 

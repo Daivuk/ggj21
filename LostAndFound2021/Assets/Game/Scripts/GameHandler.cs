@@ -25,6 +25,7 @@ public class GameHandler : MonoBehaviour
     public GameObject GameOverScreen;
 
     public GameObject InvItemPrefab;
+    public GameObject ClawFxPrefab;
 
     [SerializeField] private float MasterVolume;
 
