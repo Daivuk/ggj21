@@ -11,6 +11,8 @@ public class BoxControllerObject : Interactable
     private float ItemSpawnTimer;
     public Health health;
     private Animator animator;
+    public float HeartSpawnChance = 0.2f;
+    public GameObject heartPrefab;
     public void Awake()
     {
         animator = GetComponent<Animator>();
@@ -52,6 +54,14 @@ public class BoxControllerObject : Interactable
                 //ItemPickUpHandler.createTimedPickUp(GameController.instance.ItemPickUpPrefab, item, gameObject.transform, ItemSpawnTimer);
             }
             */
+
+            // Crates mostly spawn health
+            if (Random.Range(0, 1) <= HeartSpawnChance)
+            {
+                var heart = Instantiate(heartPrefab, transform.position, transform.rotation);
+                heart.transform.position = transform.position;
+            }
+
             Destroy(this.gameObject);
         }
 

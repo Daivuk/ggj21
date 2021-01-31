@@ -139,6 +139,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d04fe28893b84526a6ec03efb96d1eb, type: 3}
   maxBreakAblePiece: 5
   health: {fileID: 7620168585463086523}
+  HeartSpawnChance: 1
+  heartPrefab: {fileID: 1003457400086985324, guid: 3f8e5681f2fd02a478743a65d0e121d1,
+    type: 3}
 --- !u!61 &7114683642753086908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,15 +201,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d77d27f83ec4dee9519ca0f3a4d252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  facing: 0
   animateMovement: 0
   rigidbody2D: {fileID: 0}
   direction: {x: 0, y: 0}
   animatorController: {fileID: 0}
   speed: 0
+  swimSpeedMultiplier: 0
   dashSpeed: 0
   dashLength: 0
   dashCoolDown: 0
   dashInvinciblity: 0
+  isInWater: 0
   pushSpeed: 0
 --- !u!114 &7620168585463086523
 MonoBehaviour:

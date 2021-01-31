@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 public class Attacker : MonoBehaviour
 {
     [HideInInspector] public UnityEvent HealthUpdated;
@@ -26,6 +27,17 @@ public class Attacker : MonoBehaviour
             {
                 invulnerable = false;
             }
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        var health = this.GetComponent<Health>();
+        var prev = health.currentHealth;
+        health.currentHealth = Math.Min(health.TotalHealth, health.currentHealth + amount);
+        if (prev < health.currentHealth)
+        {
+            HealthUpdated.Invoke();
         }
     }
 
