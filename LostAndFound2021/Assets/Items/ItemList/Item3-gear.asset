@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item3
   itemName: Gear
   icon: {fileID: -8180560384899038985, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: damage+

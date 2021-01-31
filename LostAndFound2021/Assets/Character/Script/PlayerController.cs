@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
             inputActions.Player.DashAction.performed += PreformAction1;
             inputActions.Player.Interact.performed += InteractWithObject;
             inputActions.Player.Attack.performed += AttackAction;
-            //inputActions.Player.Action3.performed += PreformAction3;
+            inputActions.Player.MainMenu.performed += AccessMenu;
 
 
             setUpCharacter(FocusObject);
@@ -118,7 +118,23 @@ public class PlayerController : MonoBehaviour
                         case "chest":
                             ((ChestController)selectedInteractable).Interact();
                             break;
+                        case "MrSassyMain":
+                            Item sassyItem = ((MrSassyController)selectedInteractable).currentRequestItem;
 
+                            if (((MrSassyController)selectedInteractable).debugTestAccept)
+                            {
+                                ((MrSassyController)selectedInteractable).Interact();
+                            }
+                            else
+                            {
+                                if(GameHandler.instance.hasItemInInventory(sassyItem.stats.itemID))
+                                {
+                                    ((MrSassyController)selectedInteractable).Interact();
+                                    GameHandler.instance.RemoveItemFromInventory(sassyItem);
+                                }
+                            }
+                            
+                            break;
                     }
                     break;
                 }
@@ -161,7 +177,6 @@ public class PlayerController : MonoBehaviour
                             ((BoxControllerObject)selectedInteractable).Damage(attacker.AttackDamage);
                             break;
                     }
-
                     break;
                 }
                
@@ -170,6 +185,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentlyAttacking = null;
+        }
+        if(mover.state != Mover.characterState.Swimming)
+        {
+            mover.state = Mover.characterState.Attack;
+            mover.Animation();
         }
     }
 
@@ -183,5 +203,10 @@ public class PlayerController : MonoBehaviour
         }
         */
     }
-    
+
+    private void AccessMenu(InputAction.CallbackContext obj)
+    {
+        GameHandler.instance.RequestMainMenu();
+    }
+
 }

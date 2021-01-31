@@ -51,4 +51,21 @@ public class ItemListManager : MonoBehaviour
     {
         return instance.ItemLookUpTable[ID].itemName;
     }
+
+    public static ItemBaseStat pickRandomItemFromGroup()
+    {
+        int random = Random.Range(0, ItemListManager.instance.ItemLookUpTable.Count);
+        string accessKey = "";
+        int index = 0;
+        foreach(var key in ItemListManager.instance.ItemLookUpTable)
+        {
+            if(index == random)
+            {
+                accessKey = key.Key;
+            }
+            index++;
+        }
+
+        return getItemStats(accessKey);
+    }
 }

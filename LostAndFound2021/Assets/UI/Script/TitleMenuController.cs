@@ -68,6 +68,7 @@ public class TitleMenuController : MonoBehaviour
         if (activeMenu == false)
         {
             GameHandler.instance.UnPauseGame();
+            Destroy(this.gameObject);
         }
     }
 }

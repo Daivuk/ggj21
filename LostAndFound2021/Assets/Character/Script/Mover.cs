@@ -5,6 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class Mover : MonoBehaviour
 {
+    public characterState state;
+    public FacingDirection facing;
+    private FacingDirection lastFacingDirction;
     public bool animateMovement;
     [HideInInspector] public Rigidbody2D rigidbody2D;
     [HideInInspector] public Vector2 direction;
@@ -19,6 +22,14 @@ public class Mover : MonoBehaviour
     public GameObject map;
     public GameObject water;
 
+    public enum FacingDirection
+    {
+        up,
+        down,
+        left,
+        right
+    }
+
     public enum characterState
     {
         Idle,
@@ -27,9 +38,6 @@ public class Mover : MonoBehaviour
         Swimming,
         Dead
     }
-
-    characterState state;
-
     public float pushSpeed;
     private float dashCounter, dashCoolCounter;
 
@@ -62,46 +70,85 @@ public class Mover : MonoBehaviour
             dashCoolCounter -= Time.deltaTime;
         }
     }
-
+    public void Animation()
+    {
+        switch (state)
+        {
+            case characterState.Idle:
+                animatorController.SetBool("Walking", false);
+                animatorController.SetBool("Swimming", false);
+                break;
+            case characterState.Walking:
+                animatorController.SetBool("Walking", true);
+                animatorController.SetBool("Swimming", false);
+                activeMoveSpeed = speed;
+                break;
+            case characterState.Attack:
+                animatorController.SetTrigger("Attack");
+                break;
+            case characterState.Swimming:
+                animatorController.SetBool("Swimming", true);
+                animatorController.SetBool("Walking", false);
+                activeMoveSpeed = swimSpeedMultiplier;
+                break;
+            case characterState.Dead:
+                break;
+        }
+    }
     public void walk(Vector2 movementDirection)
     {
-        float speedMultiplier = 1.0f;
-
         if (animateMovement == true)
         {
             if (movementDirection.x < -0.1)
             {
-                movementDirection.x = -1;
+                facing = FacingDirection.left;
             }
             else if (movementDirection.x > 0.1)
             {
-                movementDirection.x = 1;
+                facing = FacingDirection.right;
             }
-            else
-            {
-                movementDirection.x = 0;
-            }
+            
 
             if (movementDirection.y < -0.1)
             {
-                movementDirection.y = -1;
+                facing = FacingDirection.down;
             }
-            else if (movementDirection.y > 0.5)
+            else if (movementDirection.y > 0.1)
             {
-                movementDirection.y = 1;
+                facing = FacingDirection.up;
             }
-            else
-            {
-                movementDirection.y = 0;
-            }
+            
 
             if (movementDirection.magnitude > 1)
             {
                 movementDirection.Normalize();
             }
 
-            animatorController.SetFloat("DirectionX", movementDirection.x);
-            animatorController.SetFloat("DirectionY", movementDirection.y);
+            if(lastFacingDirction != facing)
+            {
+                switch (facing)
+                {
+                    case FacingDirection.up:
+                        animatorController.SetFloat("DirectionX", 0);
+                        animatorController.SetFloat("DirectionY", 1);
+                        break;
+                    case FacingDirection.down:
+                        animatorController.SetFloat("DirectionX", 0);
+                        animatorController.SetFloat("DirectionY", -1);
+                        break;
+                    case FacingDirection.left:
+                        animatorController.SetFloat("DirectionX", -1);
+                        animatorController.SetFloat("DirectionY", 0);
+                        break;
+                    case FacingDirection.right:
+                        animatorController.SetFloat("DirectionX", 1);
+                        animatorController.SetFloat("DirectionY", 0);
+                        break;
+                }
+                lastFacingDirction = facing;
+            }
+           
+            
 
 
 
@@ -116,7 +163,7 @@ public class Mover : MonoBehaviour
             {
                 state = characterState.Swimming;
             }
-            else if (movementDirection != Vector2.zero)
+            else if (Vector2.Distance(movementDirection,Vector2.zero) > 0.15)
             {
                 state = characterState.Walking;
             }
@@ -125,31 +172,11 @@ public class Mover : MonoBehaviour
                 state = characterState.Idle;
             }
 
-            switch (state)
-            {
-                case characterState.Idle:
-                    animatorController.SetBool("Walking", false);
-                    animatorController.SetBool("Swimming", false);
-                    break;
-                case characterState.Walking:
-                    animatorController.SetBool("Walking", true);
-                    animatorController.SetBool("Swimming", false);
-                    activeMoveSpeed = speed;
-                    break;
-                case characterState.Attack:
-                    break;
-                case characterState.Swimming:
-                    animatorController.SetBool("Swimming", true);
-                    animatorController.SetBool("Walking", false);
-                    speedMultiplier = swimSpeedMultiplier;
-                    break;
-            }
+            Animation();
         }
 
-            
-        
         direction = movementDirection;
-        rigidbody2D.velocity = direction * activeMoveSpeed * speedMultiplier;
+        rigidbody2D.velocity = direction * activeMoveSpeed;
     }
     public void walk(Vector2 movementDirection, float Speed)
     {

@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item4
   itemName: Film
   icon: {fileID: 4779458108440456687, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: damage+

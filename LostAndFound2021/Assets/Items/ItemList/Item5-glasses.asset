@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item5
   itemName: glasses
   icon: {fileID: 2108165524544580468, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: health+

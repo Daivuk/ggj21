@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item6
   itemName: Money
   icon: {fileID: -6491491721578957996, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: fullHeal

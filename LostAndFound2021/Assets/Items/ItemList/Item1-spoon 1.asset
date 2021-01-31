@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item0
   itemName: Spoon
   icon: {fileID: -6738279932420892375, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: damage+

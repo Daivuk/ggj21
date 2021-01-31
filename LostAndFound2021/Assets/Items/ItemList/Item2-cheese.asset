@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item1
   itemName: Cheese
   icon: {fileID: 8213593710716141812, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: health+

@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item7
   itemName: Coffee
   icon: {fileID: 1346312723713424135, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: fullHeal

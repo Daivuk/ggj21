@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Attacker : MonoBehaviour
 {
-    [HideInInspector] public UnityEvent DamageTake;
+    [HideInInspector] public UnityEvent HealthUpdated;
     public int AttackDamage;
     public float invulnerableCoolDown;
     private float currentInvulnerableCount;
@@ -34,7 +34,7 @@ public class Attacker : MonoBehaviour
         {
             this.GetComponent<Health>().currentHealth -= damageAmount;
             //this.GetComponent<Mover>().KnockBack(dir, knockBackStrength);
-            DamageTake.Invoke();
+            HealthUpdated.Invoke();
 
             if(invulnerableCoolDown > 0)
             {

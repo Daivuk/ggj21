@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: Item8
   itemName: Keys
   icon: {fileID: 5712528049935769650, guid: 4a961fd714ce39f49913adc9779bf002, type: 3}
+  questReward: fullHeal

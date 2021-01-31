@@ -76,7 +76,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -146,15 +146,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d77d27f83ec4dee9519ca0f3a4d252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  facing: 1
   animateMovement: 1
   rigidbody2D: {fileID: 0}
   direction: {x: 0, y: 0}
   animatorController: {fileID: 5151487128089295251}
   speed: 3.6
+  swimSpeedMultiplier: 0.5
   dashSpeed: 15
   dashLength: 0.5
   dashCoolDown: 1
   dashInvinciblity: 0.5
+  map: {fileID: 0}
+  water: {fileID: 0}
   pushSpeed: 2.5
 --- !u!114 &6630419352109219353
 MonoBehaviour:
@@ -240,7 +245,7 @@ MonoBehaviour:
   - {x: -0.1589799, y: 0.24257535, z: 0}
   m_ShapePathHash: 1015132121
   m_Mesh: {fileID: 0}
-  m_InstanceId: 161990
+  m_InstanceId: -131776
 --- !u!58 &1054423091168451805
 CircleCollider2D:
   m_ObjectHideFlags: 0

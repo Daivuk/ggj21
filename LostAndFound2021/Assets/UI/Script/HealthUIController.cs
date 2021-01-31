@@ -15,7 +15,7 @@ public class HealthUIController : MonoBehaviour
 
         UpdateDisplay();
 
-        PlayerController.instance.getFocusObject().GetComponent<Attacker>().DamageTake.AddListener(() => UpdateDisplay());
+        PlayerController.instance.getFocusObject().GetComponent<Attacker>().HealthUpdated.AddListener(() => UpdateDisplay());
     }
 
     public void UpdateDisplay()

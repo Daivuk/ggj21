@@ -50,6 +50,21 @@ TextureImporter:
   - first:
       213: 1704684779430698648
     second: CatBackViewParts_15
+  - first:
+      213: -4156547217135021622
+    second: CatBackViewParts_16
+  - first:
+      213: -6089691649312985333
+    second: CatBackViewParts_17
+  - first:
+      213: -3551066881326279892
+    second: CatBackViewParts_18
+  - first:
+      213: 3627794439061784735
+    second: CatBackViewParts_19
+  - first:
+      213: 1809435116630436272
+    second: CatBackViewParts_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,7 +178,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 238
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -184,7 +199,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 238
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -204,8 +219,8 @@ TextureImporter:
       name: CatBackViewParts_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 206
+        x: 64
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -225,8 +240,8 @@ TextureImporter:
       name: CatBackViewParts_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 206
+        x: 0
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -246,8 +261,8 @@ TextureImporter:
       name: CatBackViewParts_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 174
+        x: 32
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -267,8 +282,8 @@ TextureImporter:
       name: CatBackViewParts_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 174
+        x: 64
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -289,7 +304,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 142
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -310,7 +325,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 142
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -330,8 +345,8 @@ TextureImporter:
       name: CatBackViewParts_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 110
+        x: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -351,8 +366,8 @@ TextureImporter:
       name: CatBackViewParts_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 110
+        x: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -372,8 +387,8 @@ TextureImporter:
       name: CatBackViewParts_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 78
+        x: 32
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -393,8 +408,8 @@ TextureImporter:
       name: CatBackViewParts_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 78
+        x: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -415,7 +430,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 46
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -436,7 +451,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 46
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -456,8 +471,8 @@ TextureImporter:
       name: CatBackViewParts_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 14
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -477,8 +492,8 @@ TextureImporter:
       name: CatBackViewParts_15
       rect:
         serializedVersion: 2
-        x: 32
-        y: 14
+        x: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -490,6 +505,111 @@ TextureImporter:
       bones: []
       spriteID: 89e5bfb66c148a710800000000000000
       internalID: 1704684779430698648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatBackViewParts_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1578e045af056c0800000000000000
+      internalID: -4156547217135021622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatBackViewParts_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f6903a5b11d7ba0800000000000000
+      internalID: -6089691649312985333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatBackViewParts_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2394ec5c7318bec0800000000000000
+      internalID: -3551066881326279892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatBackViewParts_19
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f984a6a42d3885230800000000000000
+      internalID: 3627794439061784735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatBackViewParts_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9efdad6a76c1910800000000000000
+      internalID: 1809435116630436272
       vertices: []
       indices: 
       edges: []

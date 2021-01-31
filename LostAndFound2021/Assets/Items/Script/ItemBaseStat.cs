@@ -8,4 +8,5 @@ public class ItemBaseStat : ScriptableObject
     public string itemID;
     public string itemName;
     public Sprite icon;
+    public string questReward;
 }

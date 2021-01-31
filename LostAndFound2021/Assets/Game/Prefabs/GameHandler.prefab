@@ -57,6 +57,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8613553f974c24854a0272b51def8e90, type: 3}
   - {fileID: 8300000, guid: a6001e0b59b1c4ab8b50f7028dfbe9eb, type: 3}
   inventory: []
+  popUpCanvas: {fileID: 0}
+  popUpPrefab: {fileID: 7240003842917628385, guid: 2b15271cf660945e2b21d64c992e01ab,
+    type: 3}
   MasterVolume: 0.5
 --- !u!82 &4652948794234925896
 AudioSource:

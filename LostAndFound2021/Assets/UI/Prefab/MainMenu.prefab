@@ -463,7 +463,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8893244526269269136}
+      - m_Target: {fileID: 3835039448046958866}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -483,7 +483,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8893244526269269139}
-  - component: {fileID: 8893244526269269136}
   - component: {fileID: 8893244526269269151}
   - component: {fileID: 8893244526269269150}
   - component: {fileID: 8893244526269269137}
@@ -517,24 +516,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8893244526269269136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8893244526269269138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b410cf772e0c7401c99d26e9c971d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  director: {fileID: 8893244526269269151}
-  intro: {fileID: 11400000, guid: 0140dd6c3d26e41a6b8e0d4a3f09c2de, type: 2}
-  outro: {fileID: 11400000, guid: e6dd66262f8c94b4b99124762eb26d31, type: 2}
-  BGMSlider: {fileID: 8893244526871593114}
-  MusicMuteText: {fileID: 8893244525387402115}
-  VolumeAmount: {fileID: 8893244527168034473}
 --- !u!320 &8893244526269269151
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -544,7 +525,7 @@ PlayableDirector:
   m_GameObject: {fileID: 8893244526269269138}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: e6dd66262f8c94b4b99124762eb26d31, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -601,7 +582,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8893244526269269136}
+        - m_Target: {fileID: 3835039448046958866}
           m_MethodName: FinishedAnimation
           m_Mode: 1
           m_Arguments:
@@ -841,7 +822,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8893244526269269136}
+      - m_Target: {fileID: 3835039448046958866}
         m_MethodName: MuteButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -1278,7 +1259,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8893244526269269136}
+      - m_Target: {fileID: 3835039448046958866}
         m_MethodName: changeVolume
         m_Mode: 1
         m_Arguments:
@@ -1564,6 +1545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8893244527287838909}
+  - component: {fileID: 3835039448046958866}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1592,6 +1574,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3835039448046958866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893244527287838908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b410cf772e0c7401c99d26e9c971d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 8893244526269269151}
+  intro: {fileID: 11400000, guid: 0140dd6c3d26e41a6b8e0d4a3f09c2de, type: 2}
+  outro: {fileID: 11400000, guid: e6dd66262f8c94b4b99124762eb26d31, type: 2}
+  BGMSlider: {fileID: 8893244526871593114}
+  MusicMuteText: {fileID: 8893244525387402115}
+  VolumeAmount: {fileID: 8893244527168034473}
 --- !u!1 &8893244527370953748
 GameObject:
   m_ObjectHideFlags: 0
