@@ -141,7 +141,7 @@ public class Mover : MonoBehaviour
                 case characterState.Swimming:
                     animatorController.SetBool("Swimming", true);
                     animatorController.SetBool("Walking", false);
-                    activeMoveSpeed = swimSpeedMultiplier;
+                    speedMultiplier = swimSpeedMultiplier;
                     break;
             }
         }
