@@ -3745,7 +3745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f642d73a45374312b07f5c34eb5ccdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomType: 1
+  roomType: 0
   PropParent: {fileID: 4232642970899664173}
   StairPositions:
   - {fileID: 3626677536340545735}
@@ -3755,6 +3755,7 @@ MonoBehaviour:
   rightDoor: 0
   upDoor: 0
   downDoor: 0
+  combatRoom: 0
 --- !u!1 &8890336576232598656
 GameObject:
   m_ObjectHideFlags: 0

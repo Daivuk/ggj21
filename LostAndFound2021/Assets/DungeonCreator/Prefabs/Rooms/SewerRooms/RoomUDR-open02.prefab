@@ -3182,7 +3182,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 46
-      m_TileSpriteIndex: 44
+      m_TileSpriteIndex: 45
       m_TileMatrixIndex: 0
       m_TileColorIndex: 9
       m_TileObjectToInstantiateIndex: 65535
@@ -3642,11 +3642,11 @@ Tilemap:
   - m_RefCount: 32
     m_Data: {fileID: -4373184736405950995, guid: 05439d6d2558f45f2bc079be7cf57cad,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1592534341640542477, guid: 05439d6d2558f45f2bc079be7cf57cad,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -6153548489646586835, guid: 05439d6d2558f45f2bc079be7cf57cad,
       type: 3}
@@ -3854,7 +3854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f642d73a45374312b07f5c34eb5ccdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomType: 1
+  roomType: 0
   PropParent: {fileID: 4232642970899664173}
   StairPositions:
   - {fileID: 3626677536340545735}
@@ -3864,6 +3864,7 @@ MonoBehaviour:
   rightDoor: 0
   upDoor: 0
   downDoor: 0
+  combatRoom: 0
 --- !u!1 &9112663535997723134
 GameObject:
   m_ObjectHideFlags: 0
