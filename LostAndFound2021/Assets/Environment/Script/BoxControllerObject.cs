@@ -56,7 +56,7 @@ public class BoxControllerObject : Interactable
             */
 
             // Crates mostly spawn health
-            if (Random.Range(0, 1) <= HeartSpawnChance)
+            if (Random.Range(0.0f, 1.0f) <= HeartSpawnChance)
             {
                 var heart = Instantiate(heartPrefab, transform.position, transform.rotation);
                 heart.transform.position = transform.position;

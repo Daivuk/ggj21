@@ -139,7 +139,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d04fe28893b84526a6ec03efb96d1eb, type: 3}
   maxBreakAblePiece: 5
   health: {fileID: 7620168585463086523}
-  HeartSpawnChance: 1
+  HeartSpawnChance: 0.15
   heartPrefab: {fileID: 1003457400086985324, guid: 3f8e5681f2fd02a478743a65d0e121d1,
     type: 3}
 --- !u!61 &7114683642753086908
