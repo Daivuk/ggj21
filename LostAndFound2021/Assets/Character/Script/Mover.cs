@@ -19,6 +19,17 @@ public class Mover : MonoBehaviour
     public GameObject map;
     public GameObject water;
 
+    public enum characterState
+    {
+        Idle,
+        Walking,
+        Attack,
+        Swimming,
+        Dead
+    }
+
+    characterState state;
+
     public float pushSpeed;
     private float dashCounter, dashCoolCounter;
 
@@ -56,12 +67,13 @@ public class Mover : MonoBehaviour
     {
         float speedMultiplier = 1.0f;
 
-        if(animateMovement == true)
+        if (animateMovement == true)
         {
             if (movementDirection.x < -0.1)
             {
                 movementDirection.x = -1;
-            }else if (movementDirection.x > 0.1)
+            }
+            else if (movementDirection.x > 0.1)
             {
                 movementDirection.x = 1;
             }
@@ -73,7 +85,8 @@ public class Mover : MonoBehaviour
             if (movementDirection.y < -0.1)
             {
                 movementDirection.y = -1;
-            }else if (movementDirection.y > 0.5)
+            }
+            else if (movementDirection.y > 0.5)
             {
                 movementDirection.y = 1;
             }
@@ -91,36 +104,49 @@ public class Mover : MonoBehaviour
             animatorController.SetFloat("DirectionY", movementDirection.y);
 
 
-            if (movementDirection != Vector2.zero)
+
+            // Normal movement
+            var grid = map.GetComponent<Grid>();
+            var tilemap = water.GetComponent<Tilemap>();
+
+            Vector3Int lPos = grid.WorldToCell(gameObject.transform.position);
+            var tile = tilemap.GetTile(lPos);
+
+            if (tile)
             {
-                animatorController.SetBool("Walking", true);
+                state = characterState.Swimming;
+            }
+            else if (movementDirection != Vector2.zero)
+            {
+                state = characterState.Walking;
             }
             else
             {
-                animatorController.SetBool("Walking", false);
+                state = characterState.Idle;
             }
 
-            
-            // Swimming
+            switch (state)
             {
-                // Normal movement
-                var grid = map.GetComponent<Grid>();
-                var tilemap = water.GetComponent<Tilemap>();
-
-                Vector3Int lPos = grid.WorldToCell(gameObject.transform.position);
-                var tile = tilemap.GetTile(lPos);
-
-                if (tile)
-                {
-                    animatorController.SetBool("Swimming", true);
-                    speedMultiplier *= swimSpeedMultiplier;
-                }
-                else
-                {
+                case characterState.Idle:
+                    animatorController.SetBool("Walking", false);
                     animatorController.SetBool("Swimming", false);
-                }
+                    break;
+                case characterState.Walking:
+                    animatorController.SetBool("Walking", true);
+                    animatorController.SetBool("Swimming", false);
+                    activeMoveSpeed = speed;
+                    break;
+                case characterState.Attack:
+                    break;
+                case characterState.Swimming:
+                    animatorController.SetBool("Swimming", true);
+                    animatorController.SetBool("Walking", false);
+                    activeMoveSpeed = swimSpeedMultiplier;
+                    break;
             }
         }
+
+            
         
         direction = movementDirection;
         rigidbody2D.velocity = direction * activeMoveSpeed * speedMultiplier;
