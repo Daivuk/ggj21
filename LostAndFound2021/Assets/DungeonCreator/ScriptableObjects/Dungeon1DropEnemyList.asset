@@ -16,21 +16,9 @@ MonoBehaviour:
   - name: 1-5 easy fight
     MinMaxLevel: {x: 0, y: 3}
     DropList:
-    - name: SingleMelee
+    - name: Rat-Lv1 attacker
       Enemies:
-      - {fileID: 8014327572921264311, guid: 5a40eddcc742143de8b09a17d7b63931, type: 3}
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
     - name: DoubleGuns
       Enemies:
-      - {fileID: 8788801457827569376, guid: ecdfbcf10a7f44b96a92a5718a4850da, type: 3}
-      - {fileID: 8788801457827569376, guid: ecdfbcf10a7f44b96a92a5718a4850da, type: 3}
-  - name: 3-7 medium fight
-    MinMaxLevel: {x: 2, y: 7}
-    DropList:
-    - name: 2 Gunners and Melee
-      Enemies:
-      - {fileID: 8788801457827569376, guid: ecdfbcf10a7f44b96a92a5718a4850da, type: 3}
-      - {fileID: 8788801457827569376, guid: ecdfbcf10a7f44b96a92a5718a4850da, type: 3}
-      - {fileID: 8014327572921264311, guid: 5a40eddcc742143de8b09a17d7b63931, type: 3}
-    - name: Brawler
-      Enemies:
-      - {fileID: 8014327572921264311, guid: c77e53d77feb14093939565b0eae4af5, type: 3}
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}

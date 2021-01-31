@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 7685524259724470409}
   - component: {fileID: 7685524259724470412}
   m_Layer: 9
-  m_Name: Rat
+  m_Name: Rat-Attacker_lv1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae65806f34642534988285b7088f48e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
-  TotalHealth: 10
+  currentHealth: 3
+  TotalHealth: 3
 --- !u!114 &7685524259724470413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatonZone: {fileID: 6573463290044355654}
-  brain: 0
+  brain: 1
   AIStoppingDistance: 1.3
   viewDistance: 5
   activationZonesMask:

@@ -46,7 +46,7 @@ public class Mover : MonoBehaviour
         // In case of not set in inespector. Turns out lot of prefabs have a "mover".
         // Didn't feel like going through them all. GAME JAM!
         if (!map) map = GameObject.Find("Map");
-        if (!water) water = GameObject.Find("Water");
+        if (!water) water = GameObject.Find("Water"); //
 
         dashCoolCounter = -1;
         dashCounter = -1;
@@ -160,6 +160,7 @@ public class Mover : MonoBehaviour
             }
            
             // Normal movement
+            
             var grid = map.GetComponent<Grid>();
             var tilemap = water.GetComponent<Tilemap>();
 

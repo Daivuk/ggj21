@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>unity-texture2d</string>
         <key>textureFileName</key>
-        <filename>../Lost&amp;Found2021/Assets/Environment/Resources/Tiles.png</filename>
+        <filename>../LostAndFound2021/Assets/Environment/Resources/Tiles.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -150,7 +150,7 @@
             <key>datafile</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../Lost&amp;Found2021/Assets/Environment/Resources/Tiles.tpsheet</filename>
+                <filename>../LostAndFound2021/Assets/Environment/Resources/Tiles.tpsheet</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -240,6 +240,7 @@
             <key type="filename">../content/sewer_tiles/floor_34.png</key>
             <key type="filename">../content/sewer_tiles/floor_35.png</key>
             <key type="filename">../content/sewer_tiles/floor_36.png</key>
+            <key type="filename">../content/sewer_tiles/floor_38.png</key>
             <key type="filename">../content/sewer_tiles/floor_42.png</key>
             <key type="filename">../content/sewer_tiles/floor_43.png</key>
             <key type="filename">../content/sewer_tiles/floor_44.png</key>
@@ -293,6 +294,7 @@
             <key type="filename">../content/sewer_tiles/wall_23.png</key>
             <key type="filename">../content/sewer_tiles/wall_24.png</key>
             <key type="filename">../content/sewer_tiles/wall_25.png</key>
+            <key type="filename">../content/sewer_tiles/wall_26.png</key>
             <key type="filename">../content/sewer_tiles/wall_3.png</key>
             <key type="filename">../content/sewer_tiles/wall_4.png</key>
             <key type="filename">../content/sewer_tiles/wall_5.png</key>

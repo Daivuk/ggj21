@@ -149,7 +149,12 @@ namespace LostAndFound.Dungeon
                 {
                     conditions = RoomConditions.TreasureRoom;
                 }
-                
+
+                if (combatRoomIndexs.Contains(roomIndex))
+                {
+                    conditions = RoomConditions.CombatRoom;
+                }
+
                 CreateRoomsOutLine(roomPositions[i], conditions);
                 roomIndex++;
             }
@@ -187,9 +192,9 @@ namespace LostAndFound.Dungeon
 
             }
             
-            DungeonTracker.instance.finishedLoadingLevel = true;
+            //DungeonTracker.instance.finishedLoadingLevel = true;
             
-            //StartCoroutine(buildMesh());
+            StartCoroutine(buildMesh());
             //Debug.Log("levelGenerator: finished adding stairs and doors");
         }
         public void Start()
@@ -213,6 +218,8 @@ namespace LostAndFound.Dungeon
 
             newMeshBuild = true;
 
+            DungeonTracker.instance.finishedLoadingLevel = true;
+
             /*
              *  old spawn enemy
              * 
@@ -223,15 +230,16 @@ namespace LostAndFound.Dungeon
                 RoomPlacementLogic rp = room.GetComponent<RoomPlacementLogic>();
                 rp.SpawnEnemies();
             }
-            yield return null;
             */
+            yield return null;
+            
 
         }
         //show speed up loading
         private void spawnEnemys()
         {
             EnemyList = new List<Attacker>();
-            foreach (GameObject room in roomList)
+            foreach(GameObject room in roomList)
             {
                 RoomPlacementLogic rp = room.GetComponent<RoomPlacementLogic>();
                 rp.SpawnEnemies(EnemyParent.transform, EnemyList);
@@ -409,7 +417,12 @@ namespace LostAndFound.Dungeon
                     roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.TreasureRoom);
                     break;
                 case RoomConditions.CombatRoom:
-                    roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.CombatRoom);
+                    //roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.CombatRoom);
+
+                    //this is save time on create new room set with space for combat
+                    roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.OpenRoom);
+                    roomType.GetComponent<RoomPlacementLogic>().combatRoom = true;
+                    
                     break;
                 case RoomConditions.DefaultRoom:
 
@@ -447,9 +460,9 @@ namespace LostAndFound.Dungeon
                 availableRooms.Add(i);
             }
 
-            /*
+            
             //combatRooms first
-            for (int i = 0; i < availableRooms.Count; i++)
+            for (int i = 1; i < availableRooms.Count; i++)
             {
                 float random = Random.Range(0.0f, 1.0f);
                 
@@ -463,7 +476,7 @@ namespace LostAndFound.Dungeon
             {
                 availableRooms.Remove(combatRoomIndexs[i]);
             }
-            */
+            
 
 
             //treasure rooms
@@ -602,26 +615,40 @@ namespace LostAndFound.Dungeon
         public GameObject DoubleDoorSide;
         public GameObject Chests;
         public GameObject Crates;
-
     }
 
     [System.Serializable]
     public class RoomPrefabSubTypes
     {
-
-        public List<ListWrapper> roomSubTypes; //it a unity thing. cant do list<list<>> in the editor
+        public List<GameObject> RoomList;
+        //public List<ListWrapper> roomSubTypes; //it a unity thing. cant do list<list<>> in the editor
 
         public GameObject getRandomRoom()
         {
-            int choice1 = Random.Range(0, roomSubTypes.Count); //total number of Lists
-            int choice2 = Random.Range(0, roomSubTypes[choice1].myList.Count);
+            //int choice1 = Random.Range(0, roomSubTypes.Count); //total number of Lists
+            //int choice2 = Random.Range(0, roomSubTypes[choice1].myList.Count);
 
             //Debug.Log("choose: " + roomSubTypes[choice1].myList[choice2].GetComponent<RoomPlacementLogic>().roomType);
+            int random = Random.Range(0, RoomList.Count);
 
-            return roomSubTypes[choice1].myList[choice2];
+            return RoomList[random];
+            //return roomSubTypes[choice1].myList[choice2];
         }
         public GameObject getRandomRoom(RoomPlacementLogic.RoomType roomType)
         {
+            List<GameObject> tempTypeList = new List<GameObject>();
+            for(int i= 0; i < RoomList.Count; i++)
+            {
+                if(RoomList[i].GetComponent<RoomPlacementLogic>().roomType == roomType)
+                {
+                    tempTypeList.Add(RoomList[i]);
+                }
+            }
+
+            int random = Random.Range(0, tempTypeList.Count);
+            return tempTypeList[random];
+
+            /*
             ListWrapper roomGroup = null;
             for (int i = 0; i < roomSubTypes.Count; i++)
             {
@@ -639,8 +666,10 @@ namespace LostAndFound.Dungeon
 
 
             return null;
+            */
         }
     }
+    /*
     [System.Serializable]
     public class ListWrapper
     {
@@ -648,5 +677,6 @@ namespace LostAndFound.Dungeon
         public RoomPlacementLogic.RoomType roomType;
         public List<GameObject> myList;
     }
+    */
 }
 
