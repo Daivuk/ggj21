@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            instance.Alive = true;
             inputActions = new PlayerInput();
 
             inputActions.Player.DashAction.performed += PreformAction1;
