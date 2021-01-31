@@ -82,17 +82,46 @@ public class GameHandler : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
-        var bar_trans = inv_bar.GetComponent<RectTransform>();
-        for (var i = 0; i < inventory.Count; ++i)
+        Dictionary<Sprite, int> dict = new Dictionary<Sprite, int>();
+        int i = 0;
+        for (i = 0; i < inventory.Count; ++i)
         {
             var item = inventory[i];
+            if (dict.ContainsKey(item.stats.icon))
+            {
+                dict[item.stats.icon]++;
+            }
+            else
+            {
+                dict.Add(item.stats.icon, 1);
+            }
+        }
+
+        var bar_trans = inv_bar.GetComponent<RectTransform>();
+        i = 0;
+        foreach (var kv in dict)
+        {
+            var item_spr = kv.Key;
 
             var inv_item = Instantiate(InvItemPrefab);
-            inv_item.GetComponent<Image>().sprite = item.stats.icon;
+
+            var text = inv_item.transform.GetChild(0);
+            if (kv.Value == 1)
+            {
+                text.gameObject.SetActive(false);
+            }
+            else
+            {
+                text.GetComponent<Text>().text = kv.Value.ToString();
+            }
+
+            inv_item.GetComponent<Image>().sprite = item_spr;
             inv_item.transform.parent = inv_bar.transform;
 
             var trans = inv_item.GetComponent<RectTransform>();
-            trans.localPosition = new Vector2(-(float)(inventory.Count - 1) * 0.5f * 72.0f + (float)i * 72.0f, 0);
+            trans.localPosition = new Vector2(-(float)(dict.Count - 1) * 0.5f * 72.0f + (float)i * 72.0f, 0);
+
+            ++i;
         }
     }
     public void CreateUpgradePopUp(string text)
