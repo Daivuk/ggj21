@@ -20,7 +20,7 @@ public class TitleMenuController : MonoBehaviour
     }
     void Start()
     {
-        BGMSlider.value = GameHandler.instance.audio.volume;
+        BGMSlider.value = GameHandler.instance.audioSystem.audio.volume;
         UpdateUI();
     }
 
@@ -36,20 +36,20 @@ public class TitleMenuController : MonoBehaviour
     }
     public void MuteButtonClicked()
     {
-        GameHandler.instance.muteAudio = !GameHandler.instance.muteAudio;
+        GameHandler.instance.audioSystem.muteAudio = !GameHandler.instance.audioSystem.muteAudio;
         UpdateUI();
     }
     public void changeVolume()
     {
-        GameHandler.instance.setMasterVolume(BGMSlider.value);
+        GameHandler.instance.audioSystem.setMasterVolume(BGMSlider.value);
         UpdateUI();
     }
     private void UpdateUI()
     {
-        if (GameHandler.instance.muteAudio) MusicMuteText.text = "Unmute audio";
-        if (GameHandler.instance.muteAudio == false) MusicMuteText.text = "Mute audio";
+        if (GameHandler.instance.audioSystem.muteAudio) MusicMuteText.text = "Unmute audio";
+        if (GameHandler.instance.audioSystem.muteAudio == false) MusicMuteText.text = "Mute audio";
 
-        VolumeAmount.text =  ((int)(GameHandler.instance.audio.volume * 100)).ToString();
+        VolumeAmount.text =  ((int)(GameHandler.instance.audioSystem.audio.volume * 100)).ToString();
     }
 
     public void IntroMenu()

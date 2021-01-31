@@ -95,6 +95,36 @@ public class Mover : MonoBehaviour
                 break;
         }
     }
+    public void walk(float angle,bool useRigidBody)
+    {
+        if (angle <= 45 || angle >= 315)
+        {
+            facing = FacingDirection.left;
+        }
+        else if (angle > 45 && angle <= 135)
+        {
+            facing = FacingDirection.up;
+        }
+        else if (angle > 135 && angle <= 225)
+        {
+            facing = FacingDirection.right;
+        }
+        else
+        {
+            facing = FacingDirection.down;
+        }
+
+        setFaceDirect();
+
+        state = characterState.Walking;
+
+        direction = UtilityHelper.GetVectorFromAngle(angle);
+        if (useRigidBody)
+        {
+            rigidbody2D.velocity = direction * activeMoveSpeed;
+        }
+        Animation();
+    }
     public void walk(Vector2 movementDirection)
     {
         if (animateMovement == true)
@@ -126,32 +156,9 @@ public class Mover : MonoBehaviour
 
             if(lastFacingDirction != facing)
             {
-                switch (facing)
-                {
-                    case FacingDirection.up:
-                        animatorController.SetFloat("DirectionX", 0);
-                        animatorController.SetFloat("DirectionY", 1);
-                        break;
-                    case FacingDirection.down:
-                        animatorController.SetFloat("DirectionX", 0);
-                        animatorController.SetFloat("DirectionY", -1);
-                        break;
-                    case FacingDirection.left:
-                        animatorController.SetFloat("DirectionX", -1);
-                        animatorController.SetFloat("DirectionY", 0);
-                        break;
-                    case FacingDirection.right:
-                        animatorController.SetFloat("DirectionX", 1);
-                        animatorController.SetFloat("DirectionY", 0);
-                        break;
-                }
-                lastFacingDirction = facing;
+                setFaceDirect();
             }
            
-            
-
-
-
             // Normal movement
             var grid = map.GetComponent<Grid>();
             var tilemap = water.GetComponent<Tilemap>();
@@ -178,6 +185,29 @@ public class Mover : MonoBehaviour
         direction = movementDirection;
         rigidbody2D.velocity = direction * activeMoveSpeed;
     }
+    private void setFaceDirect()
+    {
+        switch (facing)
+        {
+            case FacingDirection.up:
+                animatorController.SetFloat("DirectionX", 0);
+                animatorController.SetFloat("DirectionY", 1);
+                break;
+            case FacingDirection.down:
+                animatorController.SetFloat("DirectionX", 0);
+                animatorController.SetFloat("DirectionY", -1);
+                break;
+            case FacingDirection.left:
+                animatorController.SetFloat("DirectionX", -1);
+                animatorController.SetFloat("DirectionY", 0);
+                break;
+            case FacingDirection.right:
+                animatorController.SetFloat("DirectionX", 1);
+                animatorController.SetFloat("DirectionY", 0);
+                break;
+        }
+        lastFacingDirction = facing;
+    }
     public void walk(Vector2 movementDirection, float Speed)
     {
         Debug.Log("pushing crate " + movementDirection.ToString() + " " + speed);
@@ -189,7 +219,7 @@ public class Mover : MonoBehaviour
         if (activeMoveSpeed == pushSpeed) return false; // you cant dash if your pushing
         if (dashCoolCounter < 0)
         {
-            GameHandler.instance.playSoundEffect("dash");
+            GameHandler.instance.audioSystem.playSoundEffect("dash");
             activeMoveSpeed = dashSpeed;
             dashCounter = dashLength;
             return true;
@@ -203,6 +233,19 @@ public class Mover : MonoBehaviour
     public void StopDrag()
     {
         activeMoveSpeed = speed;
+    }
+    public void FinishedDeathAnimation()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public void playattackAnimation()
+    {
+        if (state != Mover.characterState.Swimming)
+        {
+            state = Mover.characterState.Attack;
+            Animation();
+        }
     }
     /*
     public void KnockBack(Vector3 SourceOfForce, float knockbackStrength)

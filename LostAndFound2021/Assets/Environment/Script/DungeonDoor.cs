@@ -13,11 +13,11 @@ public class DungeonDoor : MonoBehaviour
             dungeon.StartDungeon();
             if (entering)
             {
-                GameHandler.instance.playTheme("dungeon");
+                GameHandler.instance.audioSystem.playTheme("dungeon");
             }
             else
             {
-                GameHandler.instance.playTheme("title");
+                GameHandler.instance.audioSystem.playTheme("title");
             }
         }
     }

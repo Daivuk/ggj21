@@ -9,6 +9,7 @@ TagManager:
   - box
   - chest
   - MrSassyMain
+  - Enemy
   layers:
   - Default
   - TransparentFX

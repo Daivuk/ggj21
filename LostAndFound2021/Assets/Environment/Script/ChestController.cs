@@ -44,6 +44,7 @@ public class ChestController : Interactable
             isOpened = true;
             itemRef.sprite = itemStash.Stash[0].stats.icon;
             director.Play(openChestAnimation);
+            GameHandler.instance.audioSystem.playSoundEffect("chime");
         }
     }
 

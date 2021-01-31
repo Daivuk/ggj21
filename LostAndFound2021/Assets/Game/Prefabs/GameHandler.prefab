@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4652948794234925899}
   - component: {fileID: 4652948794234925897}
+  - component: {fileID: 6516299340734102339}
   - component: {fileID: 4652948794234925896}
   - component: {fileID: 2085782930363522587}
   m_Layer: 0
@@ -46,20 +47,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePaused: 1
+  audioSystem: {fileID: 6516299340734102339}
+  inventory: []
+  popUpCanvas: {fileID: 0}
+  popUpPrefab: {fileID: 7240003842917628385, guid: 2b15271cf660945e2b21d64c992e01ab,
+    type: 3}
+  menuCanvas: {fileID: 0}
+  MainMenuPrefab: {fileID: 0}
+  currentMainMenu: {fileID: 0}
+  GameOverScreen: {fileID: 0}
+  MasterVolume: 0.5
+--- !u!114 &6516299340734102339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652948794234925898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7ac7c1c45d74c6485d7f4080cf1282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audio: {fileID: 4652948794234925896}
   muteAudio: 0
-  CatTheme: {fileID: 8300000, guid: b78ec7c9d842a400ab9174ea33a4fe8c, type: 3}
-  dungeonTheme: {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
+  Themes:
+  - {fileID: 8300000, guid: b78ec7c9d842a400ab9174ea33a4fe8c, type: 3}
+  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   SoundEffects:
   - {fileID: 8300000, guid: 4e141023f94c54cf9926ddd0aea02317, type: 3}
   - {fileID: 8300000, guid: 9905edd74f4494c4a961f23c927cd01d, type: 3}
   - {fileID: 8300000, guid: e0268b224099f482781fafc4f82a9605, type: 3}
   - {fileID: 8300000, guid: 8613553f974c24854a0272b51def8e90, type: 3}
   - {fileID: 8300000, guid: a6001e0b59b1c4ab8b50f7028dfbe9eb, type: 3}
-  inventory: []
-  popUpCanvas: {fileID: 0}
-  popUpPrefab: {fileID: 7240003842917628385, guid: 2b15271cf660945e2b21d64c992e01ab,
-    type: 3}
   MasterVolume: 0.5
 --- !u!82 &4652948794234925896
 AudioSource:

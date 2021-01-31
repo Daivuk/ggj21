@@ -20,7 +20,7 @@ public class WaterTileLogic : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Attacker>().DamageTarget(this.transform.position, damageAmount);
+            collision.gameObject.GetComponent<Attacker>().DamageTarget(damageAmount);
         }
         if(collision.gameObject.tag == "box")
         {

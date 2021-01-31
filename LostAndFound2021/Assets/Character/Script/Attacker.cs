@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Attacker : MonoBehaviour
 {
     [HideInInspector] public UnityEvent HealthUpdated;
+    [HideInInspector] public UnityEvent Died;
     public int AttackDamage;
     public float invulnerableCoolDown;
     private float currentInvulnerableCount;
@@ -28,7 +29,7 @@ public class Attacker : MonoBehaviour
         }
     }
 
-    public void DamageTarget(Vector3 dir, int damageAmount)
+    public void DamageTarget(int damageAmount)
     {
         if(invulnerable == false)
         {
@@ -40,6 +41,11 @@ public class Attacker : MonoBehaviour
             {
                 invulnerable = true;
                 currentInvulnerableCount = invulnerableCoolDown;
+            }
+
+            if(this.GetComponent<Health>().currentHealth <= 0)
+            {
+                Died.Invoke();
             }
         }
        

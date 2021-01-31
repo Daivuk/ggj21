@@ -7,6 +7,7 @@ using LostAndFound.Dungeon;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    private bool Alive;
     [HideInInspector] public Mover mover;
     [HideInInspector] public Attacker attacker;
     public bool LockedCharacter;
@@ -34,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
 
             setUpCharacter(FocusObject);
+
+             
+
         }
         else
         {
@@ -45,6 +49,7 @@ public class PlayerController : MonoBehaviour
         mover = FocusObject.GetComponent<Mover>();
         characterHealth = FocusObject.GetComponent<Health>();
         attacker = FocusObject.GetComponent<Attacker>();
+        attacker.Died.AddListener(() => DeathLogic());
     }
     public GameObject getFocusObject()
     {
@@ -87,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
     private void InteractWithObject(InputAction.CallbackContext obj)
     {
-
+        if (Alive == false) return;
         //angle UtilityHelper.GetVectorFromAngle(mover.direction)
 
         RaycastHit2D[] raycastArray = Physics2D.RaycastAll(FocusObject.transform.position, mover.direction, viewDistance, activationZonesMask);
@@ -155,12 +160,14 @@ public class PlayerController : MonoBehaviour
 
     private void PreformAction1(InputAction.CallbackContext obj)
     {
+        if (Alive == false) return;
         Debug.Log("Dash!");
         mover.Dash();
     }
 
     private void AttackAction(InputAction.CallbackContext obj)
     {
+        if (Alive == false) return;
         RaycastHit2D[] raycastArray = Physics2D.RaycastAll(FocusObject.transform.position, mover.direction, viewDistance, activationZonesMask);
 
         if (raycastArray.Length > 0)
@@ -176,6 +183,9 @@ public class PlayerController : MonoBehaviour
                         case "box":
                             ((BoxControllerObject)selectedInteractable).Damage(attacker.AttackDamage);
                             break;
+                        case "Enemy":
+                            ((EnemyAI)selectedInteractable).Damage(attacker.AttackDamage);
+                            break;
                     }
                     break;
                 }
@@ -186,11 +196,9 @@ public class PlayerController : MonoBehaviour
         {
             currentlyAttacking = null;
         }
-        if(mover.state != Mover.characterState.Swimming)
-        {
-            mover.state = Mover.characterState.Attack;
-            mover.Animation();
-        }
+
+        GameHandler.instance.audioSystem.playSoundEffect("hit1");
+        mover.playattackAnimation();
     }
 
     private void PreformAction3(InputAction.CallbackContext obj)
@@ -206,7 +214,15 @@ public class PlayerController : MonoBehaviour
 
     private void AccessMenu(InputAction.CallbackContext obj)
     {
+        if (Alive == false) return;
         GameHandler.instance.RequestMainMenu();
+    }
+
+    public void DeathLogic()
+    {
+        Alive = false;
+        Debug.Log("Player died you should star loading the game over screen");
+        GameHandler.instance.ShowGameOver();
     }
 
 }
