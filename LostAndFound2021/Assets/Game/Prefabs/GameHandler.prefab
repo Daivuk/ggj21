@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePaused: 1
+  state: 0
   audioSystem: {fileID: 6516299340734102339}
   inventory: []
   popUpCanvas: {fileID: 0}
@@ -56,7 +57,9 @@ MonoBehaviour:
   MainMenuPrefab: {fileID: 0}
   currentMainMenu: {fileID: 0}
   GameOverScreen: {fileID: 0}
-  MasterVolume: 0.5
+  CongratsScreen: {fileID: 0}
+  InvItemPrefab: {fileID: 0}
+  ClawFxPrefab: {fileID: 0}
 --- !u!114 &6516299340734102339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +77,9 @@ MonoBehaviour:
   Themes:
   - {fileID: 8300000, guid: b78ec7c9d842a400ab9174ea33a4fe8c, type: 3}
   - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
+  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
+  - {fileID: 8300000, guid: 17f1038ffafd6164fa37258344b61df4, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: 4e141023f94c54cf9926ddd0aea02317, type: 3}
   - {fileID: 8300000, guid: 9905edd74f4494c4a961f23c927cd01d, type: 3}

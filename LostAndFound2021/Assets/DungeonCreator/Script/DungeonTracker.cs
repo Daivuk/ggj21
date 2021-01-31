@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 namespace LostAndFound.Dungeon
 {
     public class DungeonTracker : MonoBehaviour
@@ -39,6 +39,9 @@ namespace LostAndFound.Dungeon
 
         private bool dungeonActive = false;
         private bool dungeonLoading;
+        public GameObject FloorCanvas;
+        public Text FloorNumberDisplay;
+        
         private void Awake()
         {
             if (DungeonTracker.instance == null)
@@ -54,15 +57,17 @@ namespace LostAndFound.Dungeon
             }
         }
 
-        public void StartDungeon()
+        public void StartDungeon(int StartingFrom, bool down)
         {
             if (dungeonLoading == false)
             {
+                FloorCanvas.SetActive(true);
                 travelingBetweenFloors = true;
                 PlayerController.instance.getFocusObject().SetActive(false);
                 dungeonLoading = true;
                 floors = new List<LevelGenerator>();
-                currentFloor = 0;
+                if (StartingFrom < 0) StartingFrom = 0;
+                currentFloor = StartingFrom;
                 finishedLoadingLevel = false;
 
                 LevelGenerator floor = Instantiate(levelGeneratorPrefab, this.gameObject.transform).GetComponent<LevelGenerator>();
@@ -74,19 +79,39 @@ namespace LostAndFound.Dungeon
 
                 finishedLoadingLevel = true; //telling all the chest and enemy to launch
                 travelingBetweenFloors = false;
-                PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
+                if (down)
+                {
+                    PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
+                }
+                else
+                {
+                    PlayerController.instance.getFocusObject().transform.position = activeFloor.downStairs.playerOffset.position;
+                }
+                
                 PlayerController.instance.getFocusObject().SetActive(true);
             }
             else if(floors.Count >= 1)
             {
-                currentFloor = 0;
+                FloorCanvas.SetActive(true);
+                if (StartingFrom < 0) StartingFrom = 0;
+                currentFloor = StartingFrom;
                 LoadFloor();
                 PlayerController.instance.getFocusObject().SetActive(false);
-                PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
-                PlayerController.instance.getFocusObject().SetActive(true);
-            }
 
-            
+                if (down)
+                {
+                    PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
+                }
+                else
+                {
+                    PlayerController.instance.getFocusObject().transform.position = activeFloor.downStairs.playerOffset.position;
+                }
+                PlayerController.instance.getFocusObject().SetActive(true);
+
+            }
+            FloorDisplay();
+
+
         }
 
         public void LoadFloor()
@@ -105,6 +130,11 @@ namespace LostAndFound.Dungeon
             //MenuController.instance.locationInfo.displayNewLocationName(dungeonName + " F" + (currentFloor + 1));
         }
 
+        public void FloorDisplay()
+        {
+            FloorNumberDisplay.text = "F" + (currentFloor + 1).ToString(); //floor 0 doesnt exist
+
+        }
         public void setPlayerToStartingStairs()
         {
             PlayerController.instance.getFocusObject().transform.position = activeFloor.upStairs.playerOffset.position;
@@ -175,6 +205,10 @@ namespace LostAndFound.Dungeon
                     }
 
                     //LaunchNewScene(specialFloors[i].loadingScene, specialFloors[i].spawnPoint);
+                    if(currentFloor < 0)
+                    {
+                        FloorCanvas.SetActive(false);
+                    }
                     SpecialFloor = true;
                 }
             }
@@ -242,6 +276,7 @@ namespace LostAndFound.Dungeon
 
             DungeonTracker.instance.travelingBetweenFloorsCoolDown = 2.0f;
             DungeonTracker.instance.travelingBetweenFloors = false;
+            FloorDisplay();
             yield return null;
         }
 

@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.Playables;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler instance;
 
     public bool GamePaused;
+
+    public GameState state;
 
     public AudioSystem audioSystem;
 
@@ -23,12 +26,17 @@ public class GameHandler : MonoBehaviour
     public GameObject currentMainMenu;
 
     public GameObject GameOverScreen;
+    public GameObject CongratsScreen;
 
     public GameObject InvItemPrefab;
     public GameObject ClawFxPrefab;
 
-    [SerializeField] private float MasterVolume;
-
+    public enum GameState
+    {
+        IDLE,
+        GameOver,
+        YouWin,
+    }
     public void Awake()
     {
         if (instance == null)
@@ -36,6 +44,7 @@ public class GameHandler : MonoBehaviour
             instance = this;
             inventory = new List<Item>();
             audioSystem.playTheme("title");
+            instance.state = GameState.IDLE;
         }
         else
         {
@@ -47,11 +56,13 @@ public class GameHandler : MonoBehaviour
     public void UnPauseGame()
     {
         GamePaused = false;
+        PlayerController.instance.mover.rigidbody2D.velocity = Vector2.zero;
         PlayerController.instance.LockedCharacter = false;
     }
     public void PauseGame()
     {
         GamePaused = true;
+        PlayerController.instance.mover.rigidbody2D.velocity = Vector2.zero;
         PlayerController.instance.LockedCharacter = true;
     }
     public bool hasItemInInventory(string itemID)
@@ -154,7 +165,33 @@ public class GameHandler : MonoBehaviour
     }
     public void ShowGameOver()
     {
-        PauseGame();
-        GameOverScreen.SetActive(true);
+        if (state == GameState.IDLE)
+        {
+            PauseGame();
+            GameOverScreen.SetActive(true);
+            state = GameState.GameOver;
+            audioSystem.playTheme("gameover");
+        }
+        
+    }
+    public void ShowYouWinScreen()
+    {
+        if(state == GameState.IDLE)
+        {
+            PauseGame();
+            CongratsScreen.SetActive(true);
+            state = GameState.YouWin;
+            audioSystem.playTheme("win");
+        }
+    }
+
+    public void PlayAgainButtonClicked()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -6,11 +6,13 @@ public class DungeonDoor : MonoBehaviour
 {
     public DungeonTracker dungeon;
     public bool entering;
+    public int floorEntering;
+    public bool DownStairs;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            dungeon.StartDungeon();
+            dungeon.StartDungeon(floorEntering, DownStairs);
             if (entering)
             {
                 GameHandler.instance.audioSystem.playTheme("dungeon");
