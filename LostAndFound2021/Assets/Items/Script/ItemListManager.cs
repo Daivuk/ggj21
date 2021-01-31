@@ -51,6 +51,15 @@ public class ItemListManager : MonoBehaviour
     {
         return instance.ItemLookUpTable[ID].itemName;
     }
+    public Item getDrop()
+    {
+        ItemBaseStat stat = pickRandomItemFromGroup();
+        Item item = new Item(stat);
+
+        item.currentStack = 1; // We don't care about stack from drop.
+
+        return item;
+    }
 
     public static ItemBaseStat pickRandomItemFromGroup()
     {

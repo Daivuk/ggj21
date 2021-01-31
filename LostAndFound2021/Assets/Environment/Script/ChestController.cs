@@ -35,21 +35,11 @@ public class ChestController : Interactable
         // itemStash.init();
     }
 
-    void assureItem() // Yea. Item would get null on some chest. no idea why... clock is ticking
+    void assureItem()
     {
         if (item == null)
         {
-            // itemStash.init(); // ... ffs we just need one
-
-            Debug.Log(itemStash.OriginalItemList);
-
-            var original_item = itemStash.OriginalItemList[Random.Range(0, itemStash.OriginalItemList.Count)];
-
-            ItemBaseStat stat = ItemListManager.getItemStats(original_item.items.itemID);
-            item = new Item(stat);
-
-            // int amount = Random.Range((int)OriginalItemList[i].RandomAmount.x, (int)OriginalItemList[i].RandomAmount.y);
-            item.currentStack = 1; // We don't care about stack from chest.
+            item = ItemListManager.instance.getDrop();
         }
     }
 
@@ -61,7 +51,7 @@ public class ChestController : Interactable
             assureItem();
             isOpened = true;
             Debug.Log(item);
-            itemRef.sprite = item.stats.icon; // HOW IS ITEM STILL NULL HERE!!!??
+            itemRef.sprite = item.stats.icon;
             director.Play(openChestAnimation);
             GameHandler.instance.audioSystem.playSoundEffect("chime");
         }

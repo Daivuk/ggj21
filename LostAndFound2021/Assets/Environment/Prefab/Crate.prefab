@@ -140,8 +140,12 @@ MonoBehaviour:
   maxBreakAblePiece: 5
   health: {fileID: 7620168585463086523}
   HeartSpawnChance: 0.25
+  ItemSpawnChance: 0.1
   heartPrefab: {fileID: 1003457400086985324, guid: 3f8e5681f2fd02a478743a65d0e121d1,
     type: 3}
+  popupPrefab: {fileID: 4287228497710443539, guid: bd123e4009f498f4cb6d07b4bdc32a08,
+    type: 3}
+  openCrateAnimation: {fileID: 11400000, guid: 14ba9f7f9be83284e81ee1ee039c553d, type: 2}
 --- !u!61 &7114683642753086908
 BoxCollider2D:
   m_ObjectHideFlags: 0
