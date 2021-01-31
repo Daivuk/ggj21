@@ -158,8 +158,8 @@ public class PlayerController : MonoBehaviour
     private void PreformAction1(InputAction.CallbackContext obj)
     {
         if (Alive == false) return;
-        Debug.Log("Dash!");
-        mover.Dash();
+        //Debug.Log("Dash!");
+        //mover.Dash();
     }
 
     private void AttackAction(InputAction.CallbackContext obj)
