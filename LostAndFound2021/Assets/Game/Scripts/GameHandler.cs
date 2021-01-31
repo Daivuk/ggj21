@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using Cinemachine;
+using UnityEngine.UI;
+
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler instance;
@@ -21,6 +23,8 @@ public class GameHandler : MonoBehaviour
     public GameObject currentMainMenu;
 
     public GameObject GameOverScreen;
+
+    public GameObject InvItemPrefab;
 
     [SerializeField] private float MasterVolume;
 
@@ -62,11 +66,34 @@ public class GameHandler : MonoBehaviour
     }
     public void AddItemToInventory(Item item)
     {
-        inventory.Add(item);
+        inventory.Add(item); // We don't increment a stack? TODO I guess
+        refreshInvHud();
     }
     public void RemoveItemFromInventory(Item item)
     {
         inventory.Remove(item);
+        refreshInvHud();
+    }
+    public void refreshInvHud()
+    {
+        var inv_bar = GameObject.Find("InventoryBackground");
+        foreach (Transform child in inv_bar.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        var bar_trans = inv_bar.GetComponent<RectTransform>();
+        for (var i = 0; i < inventory.Count; ++i)
+        {
+            var item = inventory[i];
+
+            var inv_item = Instantiate(InvItemPrefab);
+            inv_item.GetComponent<Image>().sprite = item.stats.icon;
+            inv_item.transform.parent = inv_bar.transform;
+
+            var trans = inv_item.GetComponent<RectTransform>();
+            trans.localPosition = new Vector2(-(float)(inventory.Count - 1) * 0.5f * 72.0f + (float)i * 72.0f, 0);
+        }
     }
     public void CreateUpgradePopUp(string text)
     {
