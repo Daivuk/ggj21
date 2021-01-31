@@ -43,6 +43,9 @@ public class AudioSystem : MonoBehaviour
             case "gameOver":
                 audio.clip = Themes[3];
                 break;
+            case "win":
+                audio.clip = Themes[4];
+                break;
         }
         audio.volume = MasterVolume;
         audio.loop = true;

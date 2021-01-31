@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     private void GenerateDungeon(InputAction.CallbackContext obj)
     {
-        DungeonTracker.instance.StartDungeon();
+        //DungeonTracker.instance.StartDungeon();
     }
 
     private void PreformAction1(InputAction.CallbackContext obj)
