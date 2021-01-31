@@ -69,9 +69,17 @@ public class GameHandler : MonoBehaviour
         inventory.Add(item); // We don't increment a stack? TODO I guess
         refreshInvHud();
     }
-    public void RemoveItemFromInventory(Item item)
+    public void RemoveItemFromInventory(string itemID)
     {
-        inventory.Remove(item);
+        for(int i=0; i < instance.inventory.Count; i++)
+        {
+            if(instance.inventory[i].stats.itemID == itemID)
+            {
+                instance.inventory.RemoveAt(i);
+                break;
+            }
+        }
+        // inventory.Remove(item); // Different instance
         refreshInvHud();
     }
     public void refreshInvHud()

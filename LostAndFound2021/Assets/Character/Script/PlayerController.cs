@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
                                 if(GameHandler.instance.hasItemInInventory(sassyItem.stats.itemID))
                                 {
                                     ((MrSassyController)selectedInteractable).Interact();
-                                    GameHandler.instance.RemoveItemFromInventory(sassyItem);
+                                    GameHandler.instance.RemoveItemFromInventory(sassyItem.stats.itemID);
                                 }
                             }
                             
