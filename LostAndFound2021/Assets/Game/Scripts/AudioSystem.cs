@@ -68,6 +68,9 @@ public class AudioSystem : MonoBehaviour
             case "chime":
                 audio.PlayOneShot(SoundEffects[4]);
                 break;
+            case "crate":
+                audio.PlayOneShot(SoundEffects[5]);
+                break;
         }
     }
 

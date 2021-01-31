@@ -85,6 +85,7 @@ public class BoxControllerObject : Interactable
             }
 
             Destroy(this.gameObject);
+            GameHandler.instance.audioSystem.playSoundEffect("crate");
         }
 
 
