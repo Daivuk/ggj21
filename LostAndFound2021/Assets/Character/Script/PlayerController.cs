@@ -34,11 +34,7 @@ public class PlayerController : MonoBehaviour
             inputActions.Player.Attack.performed += AttackAction;
             inputActions.Player.MainMenu.performed += AccessMenu;
 
-
             setUpCharacter(FocusObject);
-
-             
-
         }
         else
         {

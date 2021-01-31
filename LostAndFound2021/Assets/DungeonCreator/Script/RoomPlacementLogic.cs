@@ -22,6 +22,7 @@ namespace LostAndFound.Dungeon
 
         public List<Transform> enemyPositions;
         public bool leftDoor, rightDoor, upDoor, downDoor;
+        public bool combatRoom;
         private bool firstUpdate;
         private void Awake()
         {
@@ -82,24 +83,28 @@ namespace LostAndFound.Dungeon
         }
         public void SpawnEnemies(Transform partent, List<Attacker> AttackerList)
         {
-            if (roomType != RoomType.CombatRoom) return;
+            if (combatRoom == false) return;
 
-            /*
+            
             EnemyDrop enemyList = DungeonTracker.instance.getFloorEnemyList();
             int enemyPositionIndex = Random.Range(0, enemyPositions.Count);
             foreach (GameObject enemy in enemyList.Enemies)
             {
                 GameObject obj = Instantiate(enemy, partent);
+                if(enemyPositionIndex >= enemyPositions.Count)
+                {
+                    Debug.LogError("one of the room does not have enemy spawn points");
+                }
                 obj.transform.position = enemyPositions[enemyPositionIndex].position;
 
                 //random position
-                NPCController NPCController = obj.GetComponentInChildren<NPCController>();
-                if(NPCController != null)
-                {
-                    NPCController.RotateCharacterToAngle(Random.Range(0, 360));
+                //NPCController NPCController = obj.GetComponentInChildren<NPCController>();
+                //if(NPCController != null)
+                //{
+                    //NPCController.RotateCharacterToAngle(Random.Range(0, 360));
 
-                    AttackerList.Add(obj.GetComponentInChildren<Attacker>());
-                }
+                    //AttackerList.Add(obj.GetComponentInChildren<Attacker>());
+                //}
 
                 enemyPositionIndex++;
                 if (enemyPositionIndex >= enemyPositions.Count)
@@ -107,7 +112,6 @@ namespace LostAndFound.Dungeon
                     enemyPositionIndex = 0;
                 }
             }
-            */
         }
     }
 
