@@ -21,10 +21,19 @@ public class WaterTileLogic : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Attacker>().DamageTarget(damageAmount);
+            collision.gameObject.GetComponent<Mover>().isInWater = true;
         }
         if(collision.gameObject.tag == "box")
         {
 
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Mover>().isInWater = false;
         }
     }
 }

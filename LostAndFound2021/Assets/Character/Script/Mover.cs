@@ -19,8 +19,7 @@ public class Mover : MonoBehaviour
     public float dashLength;
     public float dashCoolDown;
     public float dashInvinciblity;
-    public GameObject map;
-    public GameObject water;
+    [HideInInspector] public bool isInWater = false;
 
     public enum FacingDirection
     {
@@ -43,11 +42,6 @@ public class Mover : MonoBehaviour
 
     void Start()
     {
-        // In case of not set in inespector. Turns out lot of prefabs have a "mover".
-        // Didn't feel like going through them all. GAME JAM!
-        if (!map) map = GameObject.Find("Map");
-        if (!water) water = GameObject.Find("Water");
-
         dashCoolCounter = -1;
         dashCounter = -1;
         activeMoveSpeed = speed;
@@ -158,15 +152,8 @@ public class Mover : MonoBehaviour
             {
                 setFaceDirect();
             }
-           
-            // Normal movement
-            var grid = map.GetComponent<Grid>();
-            var tilemap = water.GetComponent<Tilemap>();
 
-            Vector3Int lPos = grid.WorldToCell(gameObject.transform.position);
-            var tile = tilemap.GetTile(lPos);
-
-            if (tile)
+            if (isInWater)
             {
                 state = characterState.Swimming;
             }
