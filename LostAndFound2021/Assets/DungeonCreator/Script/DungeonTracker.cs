@@ -33,6 +33,7 @@ namespace LostAndFound.Dungeon
         public Transform partyMemebers;
 
         [HideInInspector]  public bool travelingBetweenFloors;
+        [HideInInspector]  public float travelingBetweenFloorsCoolDown = 0; // We dont wan't players to move right away (Especially the camera didn't make it yet, or fade-in)
 
         [HideInInspector] public bool finishedLoadingLevel;
 
@@ -113,6 +114,8 @@ namespace LostAndFound.Dungeon
         public void Update()
         {
             if (dungeonActive == false) return;
+
+            travelingBetweenFloorsCoolDown -= Time.deltaTime;
 
             //hope this improve frame rate
             for(int i =0; i < activeFloor.EnemyList.Count; i++)
@@ -237,6 +240,7 @@ namespace LostAndFound.Dungeon
 
             }
 
+            DungeonTracker.instance.travelingBetweenFloorsCoolDown = 2.0f;
             DungeonTracker.instance.travelingBetweenFloors = false;
             yield return null;
         }

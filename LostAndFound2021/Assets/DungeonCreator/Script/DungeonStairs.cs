@@ -9,7 +9,8 @@ namespace LostAndFound.Dungeon
         public Transform playerOffset;
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(DungeonTracker.instance.travelingBetweenFloors == false)
+            if(DungeonTracker.instance.travelingBetweenFloors == false &&
+               DungeonTracker.instance.travelingBetweenFloorsCoolDown <= 0) // I know this is super hacky, please dont hate me. hashtag gamejam
             {
                 if (collision.gameObject == PlayerController.instance.getFocusObject())
                 {
