@@ -41,6 +41,7 @@ public class EnemyAI : Interactable
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.stoppingDistance = AIStoppingDistance;
+        agent.enabled = false;
         attacker.Died.AddListener(() => deathLogic());
         currentCountForAttackRate = 0;
     }
@@ -113,6 +114,7 @@ public class EnemyAI : Interactable
 
                 if (foundPlayer)
                 {
+                    agent.enabled = true;
                     agent.SetDestination(lastKnowLocationOfPlayer);
                     Debug.Log("Rat angle = " + directOfPlayer);
                     mover.walk(directOfPlayer,false,true); //face play and change
@@ -131,12 +133,15 @@ public class EnemyAI : Interactable
 
                 break;
             case AIBrain.Scared:
-                if(distance < fleeDistance)
+
+                if (distance < fleeDistance)
                 {
+                    agent.enabled = true;
                     mover.walk(directOpositeToPlayer, true,true); //fleeing move in the other direction face away
                 }
                 else
                 {
+                    agent.enabled = false;
                     mover.rigidbody2D.velocity = Vector2.zero;
                     mover.state = Mover.characterState.Idle;
                     mover.Animation();

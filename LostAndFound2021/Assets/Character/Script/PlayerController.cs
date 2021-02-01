@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public Health characterHealth;
 
     private PlayerInput inputActions;
-    public int viewDistance;
+    public float viewDistance;
     public LayerMask activationZonesMask;
 
     public Interactable currentlyInteractingWith;
