@@ -30,6 +30,7 @@ public class EnemyAI : Interactable
 
     private NavMeshAgent agent;
     private bool Alive;
+    public int perfectOfItemDrop;
     public void Awake()
     {
         Alive = true;
@@ -114,7 +115,7 @@ public class EnemyAI : Interactable
                 {
                     agent.SetDestination(lastKnowLocationOfPlayer);
                     Debug.Log("Rat angle = " + directOfPlayer);
-                    mover.walk(directOfPlayer,false);
+                    mover.walk(directOfPlayer,false,true); //face play and change
                     currentCountForAttackRate -= Time.deltaTime;
 
                     if(distance <= (agent.stoppingDistance -0.1) && currentCountForAttackRate <0)
@@ -132,11 +133,13 @@ public class EnemyAI : Interactable
             case AIBrain.Scared:
                 if(distance < fleeDistance)
                 {
-                    mover.walk(directOpositeToPlayer, true);
+                    mover.walk(directOpositeToPlayer, true,true); //fleeing move in the other direction face away
                 }
                 else
                 {
                     mover.rigidbody2D.velocity = Vector2.zero;
+                    mover.state = Mover.characterState.Idle;
+                    mover.Animation();
                 }
                 break;
         }
@@ -160,6 +163,20 @@ public class EnemyAI : Interactable
             agent.enabled = false;
             Alive = false;
             mover.animatorController.SetTrigger("Death");
+        }
+    }
+    public void checkItemDrop()
+    {
+        int random = Random.Range(0, 100);
+        if (random <= perfectOfItemDrop)
+        {
+            Item item = ItemListManager.instance.getDrop();
+            GameHandler.instance.AddItemToInventory(item);
+            GameObject popup = Instantiate(GameHandler.instance.popUpItemPrefab);
+            popup.transform.position = transform.position;
+
+            Popup popupComp = popup.GetComponent<Popup>();
+            popupComp.itemRef.sprite = item.stats.icon;
         }
     }
 }

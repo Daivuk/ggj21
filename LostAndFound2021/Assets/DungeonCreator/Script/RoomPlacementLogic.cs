@@ -83,9 +83,7 @@ namespace LostAndFound.Dungeon
         }
         public void SpawnEnemies(Transform partent, List<Attacker> AttackerList)
         {
-            if (combatRoom == false) return;
-
-            
+            Debug.Log("Spawnig enemy in " + gameObject.name);
             EnemyDrop enemyList = DungeonTracker.instance.getFloorEnemyList();
             int enemyPositionIndex = Random.Range(0, enemyPositions.Count);
             foreach (GameObject enemy in enemyList.Enemies)
@@ -96,15 +94,6 @@ namespace LostAndFound.Dungeon
                     Debug.LogError("one of the room does not have enemy spawn points");
                 }
                 obj.transform.position = enemyPositions[enemyPositionIndex].position;
-
-                //random position
-                //NPCController NPCController = obj.GetComponentInChildren<NPCController>();
-                //if(NPCController != null)
-                //{
-                    //NPCController.RotateCharacterToAngle(Random.Range(0, 360));
-
-                    //AttackerList.Add(obj.GetComponentInChildren<Attacker>());
-                //}
 
                 enemyPositionIndex++;
                 if (enemyPositionIndex >= enemyPositions.Count)

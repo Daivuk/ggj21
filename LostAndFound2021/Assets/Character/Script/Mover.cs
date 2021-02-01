@@ -19,6 +19,7 @@ public class Mover : MonoBehaviour
     public float dashLength;
     public float dashCoolDown;
     public float dashInvinciblity;
+    public string footstep;
     [HideInInspector] public bool isInWater = false;
 
     public enum FacingDirection
@@ -79,6 +80,7 @@ public class Mover : MonoBehaviour
                 break;
             case characterState.Attack:
                 animatorController.SetTrigger("Attack");
+                rigidbody2D.velocity = Vector2.zero;
                 break;
             case characterState.Swimming:
                 animatorController.SetBool("Swimming", true);
@@ -89,11 +91,12 @@ public class Mover : MonoBehaviour
                 break;
         }
     }
-    public void walk(float angle,bool useRigidBody)
+    public void walk(float angle,bool useRigidBody, bool flipX) //flipX Is used for fleeing
     {
         if (angle <= 45 || angle >= 315)
         {
             facing = FacingDirection.left;
+            if (flipX) facing = FacingDirection.right;
         }
         else if (angle > 45 && angle <= 135)
         {
@@ -102,6 +105,7 @@ public class Mover : MonoBehaviour
         else if (angle > 135 && angle <= 225)
         {
             facing = FacingDirection.right;
+            if (flipX) facing = FacingDirection.left;
         }
         else
         {
@@ -121,6 +125,8 @@ public class Mover : MonoBehaviour
     }
     public void walk(Vector2 movementDirection)
     {
+       
+
         if (animateMovement == true)
         {
             if (movementDirection.x < -0.1)
@@ -153,6 +159,8 @@ public class Mover : MonoBehaviour
                 setFaceDirect();
             }
 
+            if (state == characterState.Attack) return;
+
             if (isInWater)
             {
                 state = characterState.Swimming;
@@ -168,7 +176,6 @@ public class Mover : MonoBehaviour
 
             Animation();
         }
-
         direction = movementDirection;
         rigidbody2D.velocity = direction * activeMoveSpeed;
     }
@@ -233,6 +240,23 @@ public class Mover : MonoBehaviour
             state = Mover.characterState.Attack;
             Animation();
         }
+    }
+
+    //called by animation attack after sequence
+    public void FinishedAttackSequence()
+    {
+        state = characterState.Idle;
+    }
+    public void playMovementSound()
+    {
+        if(string.IsNullOrEmpty(footstep) == false)
+        {
+            GameHandler.instance.audioSystem.playSoundEffect(footstep);
+        }
+    }
+    public void playSwimmingSound()
+    {
+        GameHandler.instance.audioSystem.playSoundEffect("swim");
     }
     /*
     public void KnockBack(Vector3 SourceOfForce, float knockbackStrength)

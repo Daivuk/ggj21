@@ -239,11 +239,26 @@ namespace LostAndFound.Dungeon
         private void spawnEnemys()
         {
             EnemyList = new List<Attacker>();
+
+            int roomIndex = 0;
+
+            for (int i = 1; i < roomPositions.Count - 1; i++)
+            {
+                if (combatRoomIndexs.Contains(roomIndex))
+                {
+                    RoomPlacementLogic rp = roomList[i].GetComponent<RoomPlacementLogic>();
+                    rp.SpawnEnemies(EnemyParent.transform, EnemyList);
+
+                }
+                roomIndex++;
+            }
+
+            /*
             foreach(GameObject room in roomList)
             {
-                RoomPlacementLogic rp = room.GetComponent<RoomPlacementLogic>();
-                rp.SpawnEnemies(EnemyParent.transform, EnemyList);
+               
             }
+            */
         }
         void movegenerationPoint()
         {
@@ -269,7 +284,7 @@ namespace LostAndFound.Dungeon
         public void CreateRoomsOutLine(Vector3 roomPosition, RoomConditions conditions)
         {
 
-            Debug.Log("RoomPosition " + roomPosition.ToString() + " room condition " + conditions.ToString());
+            //Debug.Log("RoomPosition " + roomPosition.ToString() + " room condition " + conditions.ToString());
 
             
             bool roomAbove = false;
@@ -321,7 +336,7 @@ namespace LostAndFound.Dungeon
                 directionCount++;
             }
 
-            Debug.Log("create room at " + roomPosition + " roomAbove: " + roomAbove + " roomBelow: " + roomBelow + " roomleft: " + roomLeft + " roomRight: " + roomRight);
+            //Debug.Log("create room at " + roomPosition + " roomAbove: " + roomAbove + " roomBelow: " + roomBelow + " roomleft: " + roomLeft + " roomRight: " + roomRight);
 
             switch (directionCount)
             {
@@ -421,20 +436,24 @@ namespace LostAndFound.Dungeon
 
                     //this is save time on create new room set with space for combat
                     roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.OpenRoom);
-                    roomType.GetComponent<RoomPlacementLogic>().combatRoom = true;
+                    Debug.Log("CombatRoom: " + roomType.name);
+                    //roomType.GetComponent<RoomPlacementLogic>().combatRoom = true;
                     
                     break;
                 case RoomConditions.DefaultRoom:
 
                     //everything but treasure room and hidden rooms
-                    roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.OpenRoom); // RoomTypes.getRandomRoom(selection);
+                    int rand = Random.Range(0, 2);
 
-                    /*
-                    while (roomType.GetComponent<RoomPlacementLogic>().roomType == RoomPlacementLogic.RoomType.TreasureRoom || roomType.GetComponent<RoomPlacementLogic>().roomType == RoomPlacementLogic.RoomType.CombatRoom)
+                    if(rand == 1)
                     {
-                        roomType = RoomTypes.getRandomRoom(selection);
+                        roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.OpenRoom); 
                     }
-                    */
+                    else
+                    {
+                        roomType = RoomTypes.getRandomRoom(selection, RoomPlacementLogic.RoomType.Hallway);
+                    }
+                   
                     break;
             }
 

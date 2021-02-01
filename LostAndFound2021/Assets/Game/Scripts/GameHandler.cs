@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
     public List<Item> inventory;
 
     public Transform popUpCanvas;
-    public GameObject popUpPrefab;
+    public GameObject popUpDisplayPrefab;
 
     public Transform menuCanvas;
     public GameObject MainMenuPrefab;
@@ -30,6 +30,8 @@ public class GameHandler : MonoBehaviour
 
     public GameObject InvItemPrefab;
     public GameObject ClawFxPrefab;
+
+    public GameObject popUpItemPrefab;
 
     public enum GameState
     {
@@ -78,6 +80,11 @@ public class GameHandler : MonoBehaviour
     }
     public void AddItemToInventory(Item item)
     {
+        if (item.stats.itemID == "Item18" && instance.audioSystem.isPlayDungeonTheme())
+        {
+            instance.audioSystem.playTheme("techno");
+        }
+
         inventory.Add(item); // We don't increment a stack? TODO I guess
         refreshInvHud();
     }
@@ -146,7 +153,8 @@ public class GameHandler : MonoBehaviour
     }
     public void CreateUpgradePopUp(string text)
     {
-        GameObject pop = Instantiate(popUpPrefab, popUpCanvas);
+        audioSystem.playSoundEffect("upgrade");
+        GameObject pop = Instantiate(popUpDisplayPrefab, popUpCanvas);
         pop.GetComponent<UpgradeInfoPopUp>().SetUp(text);
     }
 
@@ -160,6 +168,7 @@ public class GameHandler : MonoBehaviour
         }
         else
         {
+            
             currentMainMenu.GetComponent<TitleMenuController>().OutroMenu();
         }
     }

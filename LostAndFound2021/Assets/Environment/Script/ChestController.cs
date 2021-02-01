@@ -48,7 +48,14 @@ public class ChestController : Interactable
         //base.Interact();
         if(isOpened == false)
         {
-            assureItem();
+            if (loadItem == false)
+            {
+                assureItem();
+            }
+            else
+            {
+                item = itemStash.Stash[0];
+            }
             isOpened = true;
             Debug.Log(item);
             itemRef.sprite = item.stats.icon;
@@ -57,12 +64,9 @@ public class ChestController : Interactable
         }
     }
 
+    //called by signel
     public void AddItemToInventory()
     {
-        assureItem();
         GameHandler.instance.AddItemToInventory(item);
     }
-
-
-    
 }

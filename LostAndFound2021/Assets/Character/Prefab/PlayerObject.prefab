@@ -153,13 +153,13 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   animatorController: {fileID: 5151487128089295251}
   speed: 3.6
-  swimSpeedMultiplier: 0.5
+  swimSpeedMultiplier: 2.5
   dashSpeed: 15
   dashLength: 0.5
   dashCoolDown: 1
   dashInvinciblity: 0.5
-  map: {fileID: 0}
-  water: {fileID: 0}
+  footstep: step
+  isInWater: 0
   pushSpeed: 2.5
 --- !u!114 &6630419352109219353
 MonoBehaviour:
@@ -173,7 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd56da90ef514002817306ff77f1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageTake:
+  HealthUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  Died:
     m_PersistentCalls:
       m_Calls: []
   AttackDamage: 1
@@ -245,7 +248,7 @@ MonoBehaviour:
   - {x: -0.1589799, y: 0.24257535, z: 0}
   m_ShapePathHash: 1015132121
   m_Mesh: {fileID: 0}
-  m_InstanceId: -131776
+  m_InstanceId: 98512
 --- !u!58 &1054423091168451805
 CircleCollider2D:
   m_ObjectHideFlags: 0

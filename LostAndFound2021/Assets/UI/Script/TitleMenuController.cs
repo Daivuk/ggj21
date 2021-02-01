@@ -54,11 +54,13 @@ public class TitleMenuController : MonoBehaviour
 
     public void IntroMenu()
     {
+        GameHandler.instance.audioSystem.playSoundEffect("menu2");
         activeMenu = true;
         director.Play(intro);
     }
     public void OutroMenu()
     {
+        GameHandler.instance.audioSystem.playSoundEffect("menu3");
         activeMenu = false;
         director.Play(outro);
     }

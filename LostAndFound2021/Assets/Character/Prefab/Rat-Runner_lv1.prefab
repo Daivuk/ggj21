@@ -324,8 +324,8 @@ MonoBehaviour:
   dashLength: 1
   dashCoolDown: 1
   dashInvinciblity: 1
-  map: {fileID: 0}
-  water: {fileID: 0}
+  footstep: 
+  isInWater: 0
   pushSpeed: 0
 --- !u!95 &7685524259724470410
 Animator:
@@ -371,6 +371,7 @@ MonoBehaviour:
   fleeDistance: 4
   AttackRate: 1
   lastKnowLocationOfPlayer: {x: 0, y: 0}
+  perfectOfItemDrop: 15
 --- !u!50 &7685524259724470406
 Rigidbody2D:
   serializedVersion: 4

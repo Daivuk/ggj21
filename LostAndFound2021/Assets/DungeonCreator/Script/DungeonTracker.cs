@@ -202,6 +202,7 @@ namespace LostAndFound.Dungeon
                     {
                         GameObject spawnLocation = GameObject.Find(specialFloors[i].spawnPoint);
                         PlayerController.instance.getFocusObject().transform.position = spawnLocation.transform.position;
+                        if(string.IsNullOrEmpty(specialFloors[i].soundTrack) == false) GameHandler.instance.audioSystem.playTheme(specialFloors[i].soundTrack);
                     }
 
                     //LaunchNewScene(specialFloors[i].loadingScene, specialFloors[i].spawnPoint);
@@ -321,6 +322,7 @@ namespace LostAndFound.Dungeon
         public bool teleportCurrentScene;
         public string loadingScene;
         public string spawnPoint;
+        public string soundTrack;
     }
 }
 

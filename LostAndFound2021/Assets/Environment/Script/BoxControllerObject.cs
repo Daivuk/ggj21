@@ -15,7 +15,6 @@ public class BoxControllerObject : Interactable
     public float HeartSpawnChance = 0.2f;
     public float ItemSpawnChance = 0.1f;
     public GameObject heartPrefab;
-    public GameObject popupPrefab;
     public PlayableAsset openCrateAnimation;
     public void Awake()
     {
@@ -36,7 +35,7 @@ public class BoxControllerObject : Interactable
 
             float randomHit = Random.Range(0.0f, 1.0f);
             Debug.Log("random box hit = " + randomHit);
-            animator.SetFloat("damage", randomHit);
+            animator.SetFloat("damage", randomHit); //play different animation each time make it look like it bounces
             animator.SetTrigger("hit");
         }
         else
@@ -58,7 +57,7 @@ public class BoxControllerObject : Interactable
                 var heart = Instantiate(heartPrefab, transform.position, transform.rotation);
                 heart.transform.position = transform.position;
             }
-            else if (popupPrefab != null && Random.Range(0.0f, 1.0f) <= ItemSpawnChance)
+            else if (Random.Range(0.0f, 1.0f) <= ItemSpawnChance)
             {
                 Debug.Log("TRYING TO SPAWN OBJECT FROM CRATE");
                 Item item = ItemListManager.instance.getDrop();
@@ -69,7 +68,7 @@ public class BoxControllerObject : Interactable
                     GameHandler.instance.AddItemToInventory(item);
 
                         
-                    var popup = Instantiate(popupPrefab, transform.position, transform.rotation);
+                    var popup = Instantiate(GameHandler.instance.popUpItemPrefab);
                     popup.transform.position = transform.position;
 
                     var popupComp = popup.GetComponent<Popup>();
@@ -84,13 +83,8 @@ public class BoxControllerObject : Interactable
                 }
             }
 
-            Destroy(this.gameObject);
             GameHandler.instance.audioSystem.playSoundEffect("crate");
+            Destroy(this.gameObject);
         }
-
-
-
-
-        
     }
 }

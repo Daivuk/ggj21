@@ -81,10 +81,12 @@ public class PlayerController : MonoBehaviour
         }
         */
         mover.walk(Movement);
+        /*
         if(currentlyInteractingWith != null && currentlyInteractingWith.tag == "box")
         {
             currentlyInteractingWith.GetComponent<Mover>().walk(Movement,mover.pushSpeed);
         }
+        */
     }
 
     private void InteractWithObject(InputAction.CallbackContext obj)
@@ -194,7 +196,8 @@ public class PlayerController : MonoBehaviour
             currentlyAttacking = null;
         }
 
-        GameHandler.instance.audioSystem.playSoundEffect("hit1");
+        if(mover.state != Mover.characterState.Swimming) GameHandler.instance.audioSystem.playSoundEffect("hit1");
+
         mover.playattackAnimation();
     }
 

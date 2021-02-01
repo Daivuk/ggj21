@@ -51,8 +51,7 @@ MonoBehaviour:
   audioSystem: {fileID: 6516299340734102339}
   inventory: []
   popUpCanvas: {fileID: 0}
-  popUpPrefab: {fileID: 7240003842917628385, guid: 2b15271cf660945e2b21d64c992e01ab,
-    type: 3}
+  popUpDisplayPrefab: {fileID: 0}
   menuCanvas: {fileID: 0}
   MainMenuPrefab: {fileID: 0}
   currentMainMenu: {fileID: 0}
@@ -60,6 +59,8 @@ MonoBehaviour:
   CongratsScreen: {fileID: 0}
   InvItemPrefab: {fileID: 0}
   ClawFxPrefab: {fileID: 0}
+  popUpItemPrefab: {fileID: 4287228497710443539, guid: bd123e4009f498f4cb6d07b4bdc32a08,
+    type: 3}
 --- !u!114 &6516299340734102339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,17 +76,28 @@ MonoBehaviour:
   audio: {fileID: 4652948794234925896}
   muteAudio: 0
   Themes:
+  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
   - {fileID: 8300000, guid: b78ec7c9d842a400ab9174ea33a4fe8c, type: 3}
-  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
-  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
-  - {fileID: 8300000, guid: a321f6b39f1a54477a622e6681b699e9, type: 3}
-  - {fileID: 8300000, guid: 17f1038ffafd6164fa37258344b61df4, type: 3}
+  - {fileID: 8300000, guid: 0a7d510de864d4a2d9db15fe8e2863d4, type: 3}
+  - {fileID: 8300000, guid: 9b95e8bc0d28e1e4b94865e26dbfee38, type: 3}
+  - {fileID: 8300000, guid: f8fe3f359340846618931c94755897ac, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: 4e141023f94c54cf9926ddd0aea02317, type: 3}
   - {fileID: 8300000, guid: 9905edd74f4494c4a961f23c927cd01d, type: 3}
   - {fileID: 8300000, guid: e0268b224099f482781fafc4f82a9605, type: 3}
   - {fileID: 8300000, guid: 8613553f974c24854a0272b51def8e90, type: 3}
   - {fileID: 8300000, guid: a6001e0b59b1c4ab8b50f7028dfbe9eb, type: 3}
+  - {fileID: 8300000, guid: 8be10bd48061e1147a65db0f48f28fbf, type: 3}
+  - {fileID: 8300000, guid: 5466798f472fc468b90cc4fcc3f6d0e1, type: 3}
+  - {fileID: 8300000, guid: 306a3ace616221e469d66ec52fc4e68f, type: 3}
+  - {fileID: 8300000, guid: d7253e591dec09b4ab488a0e07fd56bf, type: 3}
+  - {fileID: 8300000, guid: 892ebf65367177840a35778ad05397ff, type: 3}
+  - {fileID: 8300000, guid: c2ba5900384a54caa8ce57498fcee0e8, type: 3}
+  - {fileID: 8300000, guid: d844a10d0a04741629ac5eda98cb3ffe, type: 3}
+  - {fileID: 8300000, guid: e61fd0c332588407abe06f586bcc1d8c, type: 3}
+  - {fileID: 8300000, guid: 39755b16090e05847809a0511bea388f, type: 3}
+  - {fileID: 8300000, guid: f0eef69f6a16f694c916cb83048ea88e, type: 3}
+  - {fileID: 8300000, guid: 454f9a92f63895e40942a82ba58b4dd9, type: 3}
   MasterVolume: 0.5
 --- !u!82 &4652948794234925896
 AudioSource:

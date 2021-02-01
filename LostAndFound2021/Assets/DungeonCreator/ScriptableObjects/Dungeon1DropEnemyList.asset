@@ -13,12 +13,45 @@ MonoBehaviour:
   m_Name: Dungeon1DropEnemyList
   m_EditorClassIdentifier: 
   CoreList:
-  - name: 1-5 easy fight
+  - name: 1-2 easy fight
     MinMaxLevel: {x: 0, y: 3}
     DropList:
-    - name: Rat-Lv1 attacker
+    - name: SingileFight
       Enemies:
       - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
-    - name: DoubleGuns
+    - name: Runner
       Enemies:
       - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+    - name: Challenge
+      Enemies:
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+    - name: GoldenRunner
+      Enemies:
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+      - {fileID: 7685524259724470417, guid: 6ceccf3ee2d8f4ff68321a05062a9e19, type: 3}
+  - name: 3-5 hard fight
+    MinMaxLevel: {x: 3, y: 5}
+    DropList:
+    - name: SingileFight
+      Enemies:
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+    - name: Runner
+      Enemies:
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+    - name: Challenge hard
+      Enemies:
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+      - {fileID: 7685524259724470417, guid: 1393cb2ff7776410baf352a5f9a4d36f, type: 3}
+    - name: Challenge easy
+      Enemies:
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+    - name: GoldenRunner
+      Enemies:
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+      - {fileID: 7685524259724470417, guid: bea97dc5294f649e9988623322097f21, type: 3}
+      - {fileID: 7685524259724470417, guid: 6ceccf3ee2d8f4ff68321a05062a9e19, type: 3}
